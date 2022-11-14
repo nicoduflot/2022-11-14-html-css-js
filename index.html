@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,6 +8,7 @@
     <!-- Commentaire en HTML -->
     <!-- Ici on ajoute l'appel vers les fichier CSS et aussi de script Javascript -->
 </head>
+
 <body>
     <header id="top">
         <!-- en-tête de la page avec généralement le titre -->
@@ -37,27 +39,35 @@
                         Balises générales de contenu.
                     </h3>
                     <p>
-                        Généralement, tout les contenus de <span class="texte-rouge">type texte</span> sont a mettre dans des balise de type paragraphe.
+                        Généralement, tout les contenus de <span class="texte-rouge">type texte</span> sont a mettre
+                        dans des balise de type paragraphe.
                         Il n'y a pas que la balise <code>&lt;p&gt; &lt;/p&gt; </code>
                     </p>
                     <p>
-                        Il y a deux type de balises qui contiennent du texte, celles avec un "display block" d'autres "inline".
+                        Il y a deux type de balises qui contiennent du texte, celles avec un "display block" d'autres
+                        "inline".
                     </p>
                     <ul>
                         <li>
-                            Block : <br />la balise prend tout l'espace en largeur, et ne peut pas contenir d'autre balise de texte de type block, sauf contre-indication en CSS.<br />
+                            Block : <br />la balise prend tout l'espace en largeur, et ne peut pas contenir d'autre
+                            balise de texte de type block, sauf contre-indication en CSS.<br />
                             En revanche, elle peut contenir des balise de texte de type inline
                         </li>
                         <li>
-                            Inline :  <br />ces balises entourent le texte, sans générer de marge, d'espace, sauf contre-indication en CSS.
+                            Inline : <br />ces balises entourent le texte, sans générer de marge, d'espace, sauf
+                            contre-indication en CSS.
                         </li>
                     </ul>
                     <p>
                         Au niveau des balises block :
                     </p>
                     <blockquote>
-                        <q><cite>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores sed saepe, nobis iusto et minima illo provident repellat nihil aut vel laudantium deserunt explicabo atque mollitia commodi velit doloremque! Quis.
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla neque minima ad, vitae in velit facilis eveniet quidem ut quaerat sint odio explicabo, sed repellendus aliquid laudantium. Est, nostrum neque.</cite></q>
+                        <q><cite>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Asperiores sed saepe, nobis
+                                iusto et minima illo provident repellat nihil aut vel laudantium deserunt explicabo
+                                atque mollitia commodi velit doloremque! Quis.
+                                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla neque minima ad, vitae in
+                                velit facilis eveniet quidem ut quaerat sint odio explicabo, sed repellendus aliquid
+                                laudantium. Est, nostrum neque.</cite></q>
                     </blockquote>
                     <pre>
 Lorem ipsum dolor sit amet consectetur 
@@ -86,15 +96,19 @@ fugit!
                         Il existe des balises inline pour modifier l'apparence du texte.
                     </p>
                     <p>
-                        Par exemple, pour mettre simplement en <b>gras</b>, on utilise la balise <code>&lt;b&gt;</code>, mais si le texte mis en gras a une importance sur la pertinence du contenu niveau SEO, on <strong>utilisera la balise <code>&lt;strong&gt;</code></strong>.<br />
-                        Il existe le même comportement pour <i>l'italique</i> : la balise <code>&lt;i&gt;</code> pour simplement l'afficher visuellement,
+                        Par exemple, pour mettre simplement en <b>gras</b>, on utilise la balise <code>&lt;b&gt;</code>,
+                        mais si le texte mis en gras a une importance sur la pertinence du contenu niveau SEO, on
+                        <strong>utilisera la balise <code>&lt;strong&gt;</code></strong>.<br />
+                        Il existe le même comportement pour <i>l'italique</i> : la balise <code>&lt;i&gt;</code> pour
+                        simplement l'afficher visuellement,
                         la <em>balise <code>&lt;em&gt;</code></em>, qui elle ajoute de l'emphase sur le contenu.
                     </p>
                     <p>
-                        Autrefois, pour changer la couleur, la police d'un morceau de texte, 
-                        on utilisait <font color="#f00" face="arial" size="1">font</font>, maintenant, on va 
-                        plutôt utiliser une balise générale inline 
-                        <span style="color: red;font-size: 1.2em;font-family: Arial, Helvetica, sans-serif;"><code>&lt;span&gt;</code></span>.
+                        Autrefois, pour changer la couleur, la police d'un morceau de texte,
+                        on utilisait <font color="#f00" face="arial" size="1">font</font>, maintenant, on va
+                        plutôt utiliser une balise générale inline
+                        <span
+                            style="color: red;font-size: 1.2em;font-family: Arial, Helvetica, sans-serif;"><code>&lt;span&gt;</code></span>.
                     </p>
                     <p>
                         Il existe d'autres balise qui agissent sur le texte.<br />
@@ -112,7 +126,71 @@ fugit!
                     </a>
                 </footer>
             </article>
-            
+            <article>
+                <header>
+                    <h2>Les tableaux en HTML</h2>
+                </header>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>
+                                N° du classement
+                            </th>
+                            <th>Nom du jeu</th>
+                            <th>Editeur</th>
+                            <th>Développeur</th>
+                            <th>Année de sortie</th>
+                            <th>Prix de sortie</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>1</th>
+                            <td>Duke Nukem 3d</td>
+                            <td>Apogee Software</td>
+                            <td>3d Realms</td>
+                            <td>1996</td>
+                            <td>250 fr</td>
+                        </tr>
+                        <tr>
+                            <th>2</th>
+                            <td>Shadow Warrior</td>
+                            <td>Apogee Software</td>
+                            <td>3d Realms</td>
+                            <td>1997</td>
+                            <td>250 fr</td>
+                        </tr>
+                        <tr>
+                            <th>3</th>
+                            <td>Carmageddon</td>
+                            <td>Interplay</td>
+                            <td>Stainless Games</td>
+                            <td>1997</td>
+                            <td>200 fr</td>
+                        </tr>
+                        <tr>
+                            <th>4</th>
+                            <td>Carmageddon II</td>
+                            <td>Sales Curve Interactive</td>
+                            <td>Stainless Games</td>
+                            <td>1998</td>
+                            <td>250 fr</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th>
+                                N° du classement
+                            </th>
+                            <th>Nom du jeu</th>
+                            <th>Editeur</th>
+                            <th>Développeur</th>
+                            <th>Année de sortie</th>
+                            <th>Prix de sortie</th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </article>
         </section>
     </main>
     <footer>
@@ -120,4 +198,5 @@ fugit!
         <a href="#top" title="revenir en haut de la page">Haut de la page</a>
     </footer>
 </body>
+
 </html>
