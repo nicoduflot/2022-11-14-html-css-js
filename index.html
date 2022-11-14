@@ -283,7 +283,59 @@ fugit!
                         deux façons de l'utiliser
                     </p>
                     <figure>
-                        <video src=""
+                        <video src="./media/Fallout-4-Launch-Trailer.mp4" muted poster="./images/cropped-wallhaven-fallout-4-01-3-1536x922.jpg" controls></video>
+                        <figcaption>
+                            Vidéo du trailler de lancement de Fallout 4
+                        </figcaption>
+                    </figure>
+                    <p>
+                        Ici, la source de la vidéo est directement appelée dans les attributs de la balise video, mais 
+                        certains formats ne sont supportés par tous les navigateurs.
+                    </p>
+                    <p>
+                        Si on héberge des vidéos et qu'on veut proposer des formats adaptés aux navigateur et bande passante du visiteur,
+                        il faut préciser plusieurs source de la même vidéo, entre <code>&lt;video&gt;</code> et <code>&lt;/video&gt;</code>.
+                        Le navigateur fera le choix de la source la plus adaptée.
+                    </p>
+                    <figure>
+                        <video controls muted preload="auto">
+                            <source src="./media/Big_Buck_Bunny_360_10s_1MB.webm" type="video/webm" />
+                            <source src="./media/Big_Buck_Bunny_360_10s_1MB.mp4" type="video/mp4" />
+                        </video>
+                        <figcaption>
+                            Extrait de big buck bunny
+                        </figcaption>
+                    </figure>
+                    <h4>La balise audio</h4>
+                    <figure>
+                        <audio controls>
+                            <source src="./media/diablo_town.mp3" type="audio/mp3" />
+                        </audio>
+                    </figure>
+                </main>
+                <footer>
+                    <a href="./article.html" title="Lien vers l'article">
+                        <button>
+                            Lire plus
+                        </button>
+                    </a>
+                </footer>
+            </article>
+            <article>
+                <header>
+                    <h2>Les média hébergés sur un site tier</h2>
+                </header>
+                <main>
+                    <p>
+                        Youtube, dailymotion, etc proposent de partager leurs contenu vidéo via des cadres intégrés (iframe) dont ils fournissent le code HTML dans leurs boutons de partage.
+                    </p>
+                    <h3>Paratgé par youtube</h3>
+                    <figure>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/3vLHelBuTRM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </figure>
+                    <h3>Partagé par Dailymotion</h3>
+                    <figure style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">
+                        <iframe style="width:100%;height:100%;position:absolute;left:0px;top:0px;overflow:hidden" frameborder="0" type="text/html" src="https://www.dailymotion.com/embed/video/x9e7gr" width="100%" height="100%" allowfullscreen title="Dailymotion Video Player" ></iframe>
                     </figure>
                 </main>
                 <footer>
