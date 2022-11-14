@@ -443,6 +443,34 @@ fugit!
                                 </div>
                             </p>
                         </fieldset>
+                        <fieldset>
+                            <legend>
+                                Votre demande de contact
+                            </legend>
+                            <p>
+                                <label for="type-demande">Type de la demande : </label>
+                                <select name="type-demande" id="type-demande">
+                                    <optgroup label="Produits">
+                                        <option value="sav-produit">SAV sur un produit</option>
+                                        <option value="info-produit" selected>Informations sur un produit</option>
+                                    </optgroup>
+                                    <optgroup label="Prestations">
+                                        <option value="sav-prestation">SAV sur une prestation</option>
+                                        <option value="info-prestation">Informations sur une prestation</option>
+                                        <option value="devis-prestation">Devis sur nos prestations</option>
+                                    </optgroup>
+                                </select>
+                            </p>
+                            <p>
+                                <label for="age">Votre tranche d'âge</label>
+                            </p>
+                            <div>
+                                <input type="radio" name="trancheAge" value="-15" /><label> Moins de 15 ans</label><br />
+                                <input type="radio" name="trancheAge" value="15-25" /><label>Entre 15 et 25 ans</label><br />
+                                <input type="radio" name="trancheAge" value="26-39" checked /><label>Entre 26 et 39 ans</label><br />
+                                <input type="radio" name="trancheAge" value="40+" /><label>40 ans et plus</label><br />
+                            </div>
+                        </fieldset>
                         <p>
                             <button type="submit" name="btnSubmit" value="envoyer">
                                 Envoyer
