@@ -415,7 +415,9 @@ fugit!
                             </legend>
                             <p>
                                 <label for="prenom">Prénom : </label>
-                                <input type="text" name="prenom" id="prenom" aria-describedby="prenomAide" autofocus />
+                                <input type="text" name="prenom" 
+                                id="prenom" 
+                                aria-describedby="prenomAide" placeholder="Votre nom" autofocus />
                                 <div id="prenomAide">
                                     Entrez votre prénom dans ce champ
                                 </div>
@@ -462,7 +464,7 @@ fugit!
                                 </select>
                             </p>
                             <p>
-                                <label for="age">Votre tranche d'âge</label>
+                                <label for="trancheAge">Votre tranche d'âge</label>
                             </p>
                             <div>
                                 <input type="radio" name="trancheAge" value="-15" /><label> Moins de 15 ans</label><br />
@@ -470,6 +472,17 @@ fugit!
                                 <input type="radio" name="trancheAge" value="26-39" checked /><label>Entre 26 et 39 ans</label><br />
                                 <input type="radio" name="trancheAge" value="40+" /><label>40 ans et plus</label><br />
                             </div>
+                            <p>
+                                <label>Format désiré de la réponse</label>
+                            </p>
+                            <div>
+                                <input type="checkbox" name="contactEmail" id="contactEmail" checked><label for="contactEmail"> Par Email</label><br />
+                                <input type="checkbox" name="contactTel" id="contactTel"><label for="contactTel"> Par téléphone</label>
+                            </div>
+                            <p>
+                                <label for="message">Votre message</label><br />
+                                <textarea name="message" id="message" placeholder="Écrivez votre réponse ici : " required></textarea>
+                            </p>
                         </fieldset>
                         <p>
                             <button type="submit" name="btnSubmit" value="envoyer">
