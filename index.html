@@ -10,10 +10,11 @@
     <link rel="stylesheet" href="./css/style.css" media="screen" />
     <style>
         /* Commentaires en CSS */
-        .deuxEm{
+        .deuxEm {
             font-size: 2em;
         }
-        .deuxRem{
+
+        .deuxRem {
             font-size: 2rem;
         }
     </style>
@@ -91,7 +92,7 @@ fugit!
                 </main>
                 <footer>
                     <a href="./article.html" title="Lien vers l'article">
-                        <button>
+                        <button class="btn-primary">
                             Lire plus
                         </button>
                     </a>
@@ -130,7 +131,7 @@ fugit!
                 </main>
                 <footer>
                     <a href="./article.html" title="Lien vers l'article">
-                        <button>
+                        <button class="btn-primary">
                             Lire plus
                         </button>
                     </a>
@@ -203,7 +204,7 @@ fugit!
                         </tfoot>
                     </table>
                     <h3>Les cellules "fusionnées" dans un tableau</h3>
-                    <table border="1">
+                    <table>
                         <tr>
                             <td colspan="2">Cellule 1 - 1</td>
                             <td rowspan="2">Cellule 1 - 2</td>
@@ -233,7 +234,7 @@ fugit!
                 </main>
                 <footer>
                     <a href="./article.html" title="Lien vers l'article">
-                        <button>
+                        <button class="btn-primary">
                             Lire plus
                         </button>
                     </a>
@@ -277,7 +278,7 @@ fugit!
                 </main>
                 <footer>
                     <a href="./article.html" title="Lien vers l'article">
-                        <button>
+                        <button class="btn-primary">
                             Lire plus
                         </button>
                     </a>
@@ -335,7 +336,7 @@ fugit!
                 </main>
                 <footer>
                     <a href="./article.html" title="Lien vers l'article">
-                        <button>
+                        <button class="btn-primary">
                             Lire plus
                         </button>
                     </a>
@@ -351,22 +352,22 @@ fugit!
                         (iframe) dont ils fournissent le code HTML dans leurs boutons de partage.
                     </p>
                     <h3>Paratgé par youtube</h3>
-                    <figure>
-                        <iframe src="https://www.youtube.com/embed/3vLHelBuTRM"
+                    <figure class="video">
+                        <iframe class="video" src="https://www.youtube.com/embed/3vLHelBuTRM"
                             title="YouTube video player" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen></iframe>
                     </figure>
                     <h3>Partagé par Dailymotion</h3>
-                    <figure style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">
-                        <iframe style="width:100%;height:100%;position:absolute;left:0px;top:0px;overflow:hidden"
-                            frameborder="0" type="text/html" src="https://www.dailymotion.com/embed/video/x9e7gr"
-                            width="100%" height="100%" allowfullscreen title="Dailymotion Video Player"></iframe>
+                    <figure class="video">
+                        <iframe class="video" frameborder="0" type="text/html"
+                            src="https://www.dailymotion.com/embed/video/x9e7gr" width="100%" height="100%"
+                            allowfullscreen title="Dailymotion Video Player"></iframe>
                     </figure>
                 </main>
                 <footer>
                     <a href="./article.html" title="Lien vers l'article">
-                        <button>
+                        <button class="btn-primary">
                             Lire plus
                         </button>
                     </a>
@@ -382,9 +383,8 @@ fugit!
                     <p>
                         L'iframe est un cadre défini, qui affiche à l'intérieur un document en ligne ou du site.
                     </p>
-                    <figure style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;">
-                        <iframe style="width:100%;height:100%;position:absolute;left:0px;top:0px;overflow:hidden"
-                            src="./documents/CRAM.pdf"></iframe>
+                    <figure class="video">
+                        <iframe class="video" src="./documents/CRAM.pdf"></iframe>
                     </figure>
                     <figure>
                         <iframe src="./documents/texte.txt"></iframe>
@@ -446,33 +446,33 @@ fugit!
                             <p>
                                 <label for="prenom">Prénom : </label>
                                 <input type="text" name="prenom" id="prenom" aria-describedby="prenomAide"
-                                    placeholder="Votre nom" autofocus />
-                            <div id="prenomAide">
-                                Entrez votre prénom dans ce champ
-                            </div>
-                            </p>
+                                    placeholder="Votre nom" />
+                                </p>
+                                <div id="prenomAide">
+                                    Entrez votre prénom dans ce champ
+                                </div>
                             <p>
                                 <label for="nom">Nom : </label>
                                 <input type="text" name="nom" id="nom" aria-describedby="nomAide" required />
+                            </p>
                             <div id="nomAide">
                                 Entrez votre nom dans ce champ
                             </div>
-                            </p>
                             <p>
                                 <label for="email">Email : </label>
                                 <input type="email" name="email" id="email" aria-describedby="emailAide" required
                                     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,10}$" />
-                            <div id="emailAide">
-                                Entrez votre email dans ce champ
-                            </div>
-                            </p>
+                                </p>
+                                <div id="emailAide">
+                                    Entrez votre email dans ce champ
+                                </div>
                             <p>
                                 <label for="telephone">Téléphone : </label>
                                 <input type="tel" name="telephone" id="telephone" aria-describedby="telephoneAide" />
+                            </p>
                             <div id="telephoneAide">
                                 Entrez votre téléphone dans ce champ
                             </div>
-                            </p>
                         </fieldset>
                         <fieldset>
                             <legend>
@@ -495,21 +495,21 @@ fugit!
                             <p>
                                 <label for="trancheAge">Votre tranche d'âge</label>
                             </p>
-                            <div>
+                            <div class="radio-check">
                                 <input type="radio" name="trancheAge" value="-15" /><label> Moins de 15
-                                    ans</label><br />
+                                    ans</label>
                                 <input type="radio" name="trancheAge" value="15-25" /><label>Entre 15 et 25
-                                    ans</label><br />
+                                    ans</label>
                                 <input type="radio" name="trancheAge" value="26-39" checked /><label>Entre 26 et 39
-                                    ans</label><br />
-                                <input type="radio" name="trancheAge" value="40+" /><label>40 ans et plus</label><br />
+                                    ans</label>
+                                <input type="radio" name="trancheAge" value="40+" /><label>40 ans et plus</label>
                             </div>
                             <p>
                                 <label>Format désiré de la réponse</label>
                             </p>
-                            <div>
+                            <div class="radio-check">
                                 <input type="checkbox" name="contactEmail" id="contactEmail" checked><label
-                                    for="contactEmail"> Par Email</label><br />
+                                    for="contactEmail"> Par Email</label>
                                 <input type="checkbox" name="contactTel" id="contactTel"><label for="contactTel"> Par
                                     téléphone</label>
                             </div>
@@ -520,7 +520,7 @@ fugit!
                             </p>
                         </fieldset>
                         <p>
-                            <button type="submit" name="btnSubmit" value="envoyer">
+                            <button class="btn-success" type="submit" name="btnSubmit" value="envoyer">
                                 Envoyer
                             </button>
                         </p>
@@ -560,8 +560,8 @@ fugit!
                 </main>
                 <footer>
                     <a href="./article.html" title="Lien vers l'article">
-                        <button>
-                            Lire l'article
+                        <button class="btn-primary">
+                            Lire plus
                         </button>
                     </a>
                 </footer>

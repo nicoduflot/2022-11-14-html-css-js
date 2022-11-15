@@ -1,4 +1,4 @@
-@import url('./ScarvilleFree.css');
+@import url('./edosz.css');
 /* 
 /!\ ATTENTION /!\
 Les import doivent OBLIGATOIREMENT être fait en tout début du fichier CSS
@@ -29,8 +29,20 @@ si 2em = 32 px, 1em = 16px
     --nav-link-color: rgb(115, 32, 2);
     --nav-link-bg-color: #F29B30;
     --heading-font-color: rgb(115, 32, 2);
-    --heading-font-family: 'ScarvilleFree';
+    --heading-font-family: 'edosz';
     --general-font-color: rgb(44, 42, 89);
+    --btn-success-border:   #198754;
+    --btn-success-bg:       #198754;
+    --btn-success-color: #198754;
+    --btn-primary-border:   #0d6efd;
+    --btn-primary-bg:       #0d6efd;
+    --btn-primary-color:    #0d6efd;
+    --th-cell-bg: rgb(44, 42, 89);
+    --tr-bg-even: rgba(44, 42, 89, 0.15);
+    --th-cell-color: white;
+    --table-border-color: rgb(44, 42, 89);
+    --form-input-border: black;
+    --form-input-border-focus: rgb(60, 84, 115);
     /* 
     #2C2A59 => en héxadécimal il y a 2C de rouge, 2A de vert et 59 de bleu 
     00  => 0
@@ -70,6 +82,121 @@ h1, h2, h3, h4, h5, h6{
     letter-spacing: 0.2rem;
 }
 
+button{
+    line-height: 2rem;
+    padding-left: 25px;
+    padding-right: 25px;
+    /*
+    padding: 10px 25px;
+    */
+    border: 1px solid transparent;
+    background-color: transparent;
+    border-radius: 2rem;
+    margin: 10px;
+    cursor: pointer;
+}
+
+.btn-success{
+    border-color: var(--btn-success-border);
+    color: var(--btn-success-color);
+}
+
+.btn-success:hover{
+    background-color: var(--btn-success-bg);
+    color: white;
+}
+
+.btn-primary{
+    border-color: var(--btn-primary-border);
+    color: var(--btn-primary-color);
+}
+
+.btn-primary:hover{
+    background-color: var(--btn-primary-bg);
+    color: white;
+}
+
+figure.video{
+    position:relative;
+    padding-bottom:56.25%;
+    height:0;
+    overflow:hidden;
+}
+
+iframe.video{
+    width:100%;
+    height:100%;
+    position:absolute;
+    left:0px;
+    top:0px;
+    overflow:hidden;
+}
+
+table{
+    border-collapse: collapse;
+}
+
+tr:nth-of-type(odd){
+    background-color: var(--tr-bg-even);
+}
+
+th{
+    background-color: var(--th-cell-bg);
+    color: var(--th-cell-color);
+}
+
+th, td{
+    border-width: 1px;
+    border-style: solid;
+    word-break: break-all;
+    border-color: var(--table-border-color);
+}
+
+form fieldset label:not(.radio-check label){
+    width: 100%;
+}
+
+form fieldset p,
+div.radio-check{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+div.radio-check label{
+    width: 70%;
+}
+
+div.radio-check input{
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+form fieldset p input[type="text"],
+form fieldset p input[type="email"],
+form fieldset p input[type="tel"],
+form fieldset p select{
+    width: 100%;
+    line-height: 2rem;
+    border-radius: 5px;
+    padding-left: 5px;
+    border: 1px solid var(--form-input-border);
+}
+
+form fieldset p input[type="text"]:focus,
+form fieldset p input[type="email"]:focus,
+form fieldset p input[type="tel"]:focus,
+form fieldset p select:focus,
+form fieldset p input[type="text"]:focus-within,
+form fieldset p input[type="email"]:focus-within,
+form fieldset p input[type="tel"]:focus-within,
+form fieldset p select:focus-within,
+form fieldset p input[type="text"]:focus-visible,
+form fieldset p input[type="email"]:focus-visible,
+form fieldset p input[type="tel"]:focus-visible,
+form fieldset p select:focus-visible{
+    border-color: var(--form-input-border-focus);
+}
+
 /* déclaration des éléments selon leur architecture - structure */
 
 body{
@@ -88,6 +215,11 @@ body > header{
 body > header h1{
     margin: 0;
     font-size: 3rem;
+    text-shadow: 1px 1px var(--form-input-border);
+}
+
+body > nav{
+    background-color: var(--nav-link-bg-color);
 }
 
 body > nav ul{
@@ -107,16 +239,134 @@ body > nav ul a:visited{
     color: var(--nav-link-color);
     font-weight: bold;
     padding-left: 15px;
+    padding-right: 15px;
     background-color: var(--nav-link-bg-color);
 }
 
-body > nav ul a:hover{
+body > nav ul a:hover,
+body > nav ul a:focus{
     color: var(--nav-link-bg-color);
     background-color: var(--nav-link-color);
 }
 
+body > main, body > nav > ul{
+    margin-left: auto;
+    margin-right: auto;
+}
 
 body > main article{
-    padding-left: 10px;
-    padding-right: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    box-shadow: 0 0 5px var(--form-input-border);
+}
+
+body > main article footer{
+    text-align: center;
+}
+
+/* 
+media queries : 
+    précision css quand à divers paramètres comme le type d'affichage 
+    ou la largeur d'affichage de l'appareil  
+*/
+
+@media (min-width: 576px){
+    body > main, body > nav > ul{
+        max-width: 540px;
+    }
+
+    body > nav > ul{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+    }
+
+    body > nav ul a,
+    body > nav ul a:visited{
+        border: unset;
+    }
+}
+
+@media (min-width: 768px){
+    body > main, body > nav > ul{
+        max-width: 720px;
+    }
+
+    body > main > section{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    body > main > section > article{
+        width: 50%;
+        width: calc( 50% - 20px );
+    }
+
+    body > main > section > article:last-child:nth-of-type(2n+1){
+        width: calc( 100% - 20px );
+    }
+
+}
+
+@media (min-width: 992px){
+    body > main, body > nav > ul{
+        max-width: 960px;
+    }
+}
+
+@media (min-width: 1200px){
+    body > main, body > nav > ul{
+        max-width: 1140px;
+    }
+
+    body > main > section > article{
+        width: calc( 33% - 20px );
+    }
+
+    body > main > section > article:last-child:nth-of-type(3n+2){
+        width: calc( 66% - 20px );
+    }
+
+    body > main > section > article:last-child:nth-of-type(3n+1){
+        width: calc( 100% - 20px );
+    }
+}
+
+@media (min-width: 1400px){
+    body > main, body > nav > ul{
+        max-width: 1320px;
+    }
+}
+
+@media (min-width: 1600px){
+    body > main, body > nav > ul{
+        max-width: 1500px;
+    }
+
+    body > main > section > article{
+        width: calc( 25% - 20px );
+    }
+
+    body > main > section > article:last-child:nth-of-type(3n+1) {
+        width: calc( 25% - 20px );
+    }
+
+    body > main > section > article:last-child:nth-of-type(4n+3){
+        width: calc( 50% - 20px );
+    }
+
+    body > main > section > article:last-child:nth-of-type(4n+2){
+        width: calc( 75% - 20px );
+    }
+
+    body > main > section > article:last-child:nth-of-type(4n+1){
+        width: calc( 100% - 20px );
+    }
 }
