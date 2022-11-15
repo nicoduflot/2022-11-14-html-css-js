@@ -1,0 +1,122 @@
+@import url('./ScarvilleFree.css');
+/* 
+/!\ ATTENTION /!\
+Les import doivent OBLIGATOIREMENT être fait en tout début du fichier CSS
+*/
+/*
+dimension les plus vues en web :
+px      =>  Pixel
+em      =>  cadratin : unité de mesure en print sur les presses
+            le cadratin se calcul par rapport à son parent
+rem     =>  cadratin racine : se calcul par rapport à la taille racine de police
+%       =>  pourcentage, se calcule par rapport à l'élément qui le contient
+vw & vh =>  viewport width & viewport height : correspond à la taille 
+            d'affichage de la page en largeur et en hauteur
+            si affichage en largeur 768px alors 20vw = 153.6 px
+
+si 2em = 32 px, 1em = 16px
+
+*/
+
+/* le :root permet de créer des variables qui sont appelables par les règles css avec var() */
+:root{
+    /*font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;*/
+    /* on va préférer utiliser des variables pour le CSS => maintenabilité améliorée */
+    --classic-font: Arial, Helvetica, sans-serif;
+    /*--classic-font: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;*/
+    --general-header-bg: #F29B30;
+    --nav-link-border: var(--nav-link-color);
+    --nav-link-color: rgb(115, 32, 2);
+    --nav-link-bg-color: #F29B30;
+    --heading-font-color: rgb(115, 32, 2);
+    --heading-font-family: 'ScarvilleFree';
+    --general-font-color: rgb(44, 42, 89);
+    /* 
+    #2C2A59 => en héxadécimal il y a 2C de rouge, 2A de vert et 59 de bleu 
+    00  => 0
+    2C  => 44
+    2A  => 42
+    59  => 89
+    ff => 255
+    #3C5473 bleu nuit
+    #D97941 bisque orangé
+    */
+}
+
+*, 
+*::before, 
+*::after{
+    box-sizing: border-box;
+}
+
+.testLargeur{
+    width: 100px;
+    height: 100px;
+    background-color: black;
+    color: white;
+    padding: 5px;
+    border: 3px solid red;
+}
+
+/* déclaration générales sur des éléments ponctuels */
+
+img, video{
+    max-width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6{
+    color: var(--heading-font-color);
+    font-family: var(--heading-font-family);
+    letter-spacing: 0.2rem;
+}
+
+/* déclaration des éléments selon leur architecture - structure */
+
+body{
+    font-family: var(--classic-font);
+    margin: 0;
+    color: var(--general-font-color);
+}
+
+/* je vais donner un comportement CSS au header qui est l'enfant direct de body, grace au >  */
+/* #top */
+body > header{
+    text-align: center;
+    background-color: var(--general-header-bg);
+}
+
+body > header h1{
+    margin: 0;
+    font-size: 3rem;
+}
+
+body > nav ul{
+    list-style-type: none;
+    padding: 0;
+    line-height: 2rem;
+    margin: 0;
+}
+
+body > nav ul a,
+body > nav ul a:visited{
+    display: block;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-bottom-color: var(--nav-link-border);
+    text-decoration: none;
+    color: var(--nav-link-color);
+    font-weight: bold;
+    padding-left: 15px;
+    background-color: var(--nav-link-bg-color);
+}
+
+body > nav ul a:hover{
+    color: var(--nav-link-bg-color);
+    background-color: var(--nav-link-color);
+}
+
+
+body > main article{
+    padding-left: 10px;
+    padding-right: 10px;
+}

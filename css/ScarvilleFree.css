@@ -1,0 +1,9 @@
+@font-face {
+    font-family: 'ScarvilleFree';
+    src: url('../fonts/ScarvilleFree.eot');
+    src: url('../fonts/ScarvilleFree.eot') format('embedded-opentype'),
+         url('../fonts/ScarvilleFree.woff2') format('woff2'),
+         url('../fonts/ScarvilleFree.woff') format('woff'),
+         url('../fonts/ScarvilleFree.ttf') format('truetype'),
+         url('../fonts/ScarvilleFree.svg#ScarvilleFree') format('svg');
+}
