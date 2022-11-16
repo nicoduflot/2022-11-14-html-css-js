@@ -116,6 +116,16 @@ button{
     color: white;
 }
 
+.aside-article-left{
+    float: right;
+    border: 1px solid #000;
+    width: 100%;
+}
+
+.column-list{
+    column-count: 1;
+}
+
 figure.video{
     position:relative;
     padding-bottom:56.25%;
@@ -313,11 +323,19 @@ media queries :
         width: calc( 100% - 20px );
     }
 
+    .aside-article-left{
+        width: 300px;
+    }
+
 }
 
 @media (min-width: 992px){
     body > main, body > nav > ul{
         max-width: 960px;
+    }
+
+    .column-list{
+        column-count: 2;
     }
 }
 
@@ -368,5 +386,9 @@ media queries :
 
     body > main > section > article:last-child:nth-of-type(4n+1){
         width: calc( 100% - 20px );
+    }
+
+    .column-list{
+        column-count: 3;
     }
 }
