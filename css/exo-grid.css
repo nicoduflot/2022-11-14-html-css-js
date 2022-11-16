@@ -1,0 +1,127 @@
+/*
+CSS exo grid
+*/
+
+:root{
+    font-family: monospace;
+    background-color: black;
+    color: rgb(8, 168, 8);
+}
+
+.grid-wrapper, .grid-wrapper-header, .grid-wrapper-footer{
+    display: grid; 
+    grid-template-columns: 100%; 
+    padding: 1rem; 
+    grid-auto-rows:auto; 
+    gap: 0.9rem; 
+}
+
+.grid-div{
+    border: 3px solid var(--bg-nav-principale);
+    background-color: rgba(9, 81, 15, 0.5);
+    padding: 1rem;
+    vertical-align: bottom;
+}
+
+.animated-dot{
+    animation-duration: .8s;
+    animation-name: clignoter;
+    animation-iteration-count: infinite;
+    transition: none;
+}
+
+@keyframes clignoter{
+    0%{
+        opacity: 1;
+    }
+    40%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+@media (min-width: 576px){
+    .grid-wrapper{
+        grid-template-columns: repeat( 3, calc( calc( 100% - 2.1rem ) / 3 )  );
+    }
+
+    .grid-wrapper-header{
+        grid-template-columns: repeat( 2, calc( calc( 100% - 0.9rem ) / 2 )  );
+    }
+}
+
+@media (min-width: 768px){
+    .un{
+        grid-column: 1 / 2;
+    }
+
+    .deux{
+        grid-column: 2 / 4;
+    }
+
+    .quatre{
+        grid-column: 1 / 3;
+        grid-row: 3 / 5;
+    }
+
+    .trois{
+        grid-column: 1 / 4;
+    }
+
+    .huit{
+        grid-column: 2 / 4;
+        grid-row: 5 / 6
+    }
+
+    .neuf{
+        grid-row: 6 / 8;
+    }
+
+    .dix_huit{
+        grid-column: 2 / 4;
+    }
+}
+
+@media (min-width: 1200px){
+    .grid-wrapper{
+        grid-template-columns: repeat( 4, calc( calc( 100% - 2.7rem ) / 4 )  );
+        grid-auto-rows: minmax(200px, auto);
+    }
+
+    .un{
+        grid-column: 1 / 3;
+    }
+    .deux{
+        grid-column: 3 / 5;
+    }
+
+    .trois{
+        grid-column: 1 / 3;
+    }
+
+    .quatre{
+        grid-column: 3 / 5;
+        grid-row: 2 / 4;
+    }
+
+    .huit{
+        grid-column: 2 / 4;
+        grid-row: 4 / 6
+    }
+
+    .neuf{
+        grid-column: 4 / 5;
+        grid-row: 4 / 6;
+    }
+
+    .seize{
+        grid-column: 2 / 4;
+    }
+
+    .dix_huit{
+        grid-column: 1 / 5;
+    }
+
+}
