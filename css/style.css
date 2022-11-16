@@ -96,6 +96,47 @@ button{
     cursor: pointer;
 }
 
+hr{
+    border: 1px solid var(--general-header-bg);
+    box-shadow: 1px 1px var(--general-font-color);
+}
+
+aside main{
+    padding: 10px;
+    font-size: 0.9rem;
+}
+
+aside h3{
+    text-align: center;
+    color: var(--general-header-bg);
+    background-color: var(--heading-font-color);
+    margin: 0;
+    line-height: 2rem;
+}
+
+aside h4{
+    text-align: center;
+}
+
+article blockquote{
+    border: 1px solid var(--form-input-border-focus);
+    padding: 5px;
+    background-color: var(--general-header-bg);
+    font-weight: bold;
+    box-shadow: 2px 2px var(--table-border-color);
+    font-size: 0.9rem;
+}
+
+article aside{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+figure{
+    text-align: center;
+}
+
+
 .btn-success{
     border-color: var(--btn-success-border);
     color: var(--btn-success-color);
@@ -116,10 +157,18 @@ button{
     color: white;
 }
 
-.aside-article-left{
+.aside-article-right{
     float: right;
     border: 1px solid #000;
     width: 100%;
+    margin-left: 10px;
+}
+
+.aside-article-left{
+    float: left;
+    border: 1px solid #000;
+    width: 100%;
+    margin-right: 10px;
 }
 
 .column-list{
@@ -160,6 +209,10 @@ th, td{
     border-style: solid;
     word-break: break-all;
     border-color: var(--table-border-color);
+}
+
+aside th, aside td{
+    word-break:normal;
 }
 
 form fieldset label:not(.radio-check label){
@@ -280,6 +333,10 @@ body > main article footer{
     text-align: center;
 }
 
+footer{
+    clear: both;
+}
+
 /* 
 media queries : 
     précision css quand à divers paramètres comme le type d'affichage 
@@ -323,10 +380,6 @@ media queries :
         width: calc( 100% - 20px );
     }
 
-    .aside-article-left{
-        width: 300px;
-    }
-
 }
 
 @media (min-width: 992px){
@@ -336,6 +389,19 @@ media queries :
 
     .column-list{
         column-count: 2;
+    }
+
+    .aside-article-right{
+        width: 300px;
+    }
+    
+    .aside-article-left{
+        width: 300px;
+    }
+
+    article blockquote{
+        float: left;
+        width: 300px;
     }
 }
 
