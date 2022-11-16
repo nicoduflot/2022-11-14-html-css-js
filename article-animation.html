@@ -8,6 +8,8 @@
     <!-- Commentaire en HTML -->
     <!-- Ici on ajoute l'appel vers les fichier CSS et aussi de script Javascript -->
     <link rel="stylesheet" href="./css/style.css" media="screen" />
+    <link rel="stylesheet" href="./css/animation.css" media="screen" />
+    <link rel="stylesheet" href="./css/animate-css.css" media="screen" />
     <style>
         /* Commentaires en CSS */
         .deuxEm {
@@ -23,7 +25,7 @@
 <body>
     <header id="top">
         <!-- en-tête de la page avec généralement le titre -->
-        <h1>Formation HTML5 CSS3</h1>
+        <h1 class="animate__animated animate__bounce animate__infinite">Formation HTML5 CSS3</h1>
     </header>
     <nav>
         <!-- navigation principale du site -->
@@ -69,7 +71,7 @@
                         </header>
                         <main>
                             <figure>
-                                <img class="zoom" src="./images/Multiplane_camera.jpg"
+                                <img class="translation" src="./images/Multiplane_camera.jpg"
                                     alt="Une reproduction de caméra multiplane par un amateur d'animation." />
                                 <figcaption>
                                     Une reproduction de caméra multiplane par un amateur d'animation.
@@ -283,7 +285,7 @@
                             Discworld character
                         </h4>
                         <main>
-                            <figure>
+                            <figure class="scale">
                                 <img src="./images/Tiffany_Aching_in_The_Wee_Free_Men.png"
                                     alt="Tiffany in The Wee Free Men, as drawn by Paul Kidby" />
                                 <figcaption>
@@ -379,6 +381,11 @@
                     <p>
                         At the climax of events in I Shall Wear Midnight, it is revealed that Tiffany, as the Witch of the Chalk, also has powers and authority not unlike a Justice of the peace; she is able to perform binding marriage ceremonies, and judge and deal out punishment(s) onto the deserving.
                     </p>
+                    <div style="position: relative;height: 300px;">
+                        <div class="carre animation">
+    
+                        </div>
+                    </div>
                     <h3>
                         Relationships
                     </h3>
@@ -491,16 +498,21 @@
                             <a href="/wiki/2021_en_musique" title="2021 en musique">2021</a>&nbsp;: <i>Moral Hygiene</i>
                         </li>
                     </ul>
+                    <div class="cercle">
+
+                    </div>
+                    <div class="triangle">
+
+                    </div>
+                    <div class="badge">
+                        <div class="imgFg"></div>
+                        <div class="imgMg"></div>
+                        <div class="imgBg"></div>
+                    </div>
                 </main>
             </article>
         </section>
     </main>
-    <aside class="aside-article-left" style="margin-left: 20px;">
-        <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim ipsum earum in praesentium provident. Mollitia praesentium commodi autem, totam quisquam id ab quo modi voluptates? Assumenda aliquid sapiente deserunt incidunt.
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus quaerat nemo esse, pariatur sapiente perferendis quis corrupti culpa ut sed enim, quo quia officiis tempore facere minus ad, optio aspernatur?
-        </p>
-    </aside>
     <footer>
         <!-- pied de page -->
         <a href="#top" title="revenir en haut de la page">Haut de la page</a>
