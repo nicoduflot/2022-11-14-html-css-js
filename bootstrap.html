@@ -1,22 +1,81 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BOOTSTRAP</title>
     <link rel="stylesheet" href="./css/bootstrap.css" />
     <script src="./js/bootstrap.bundle.js"></script>
+    <link rel="stylesheet" href="./css/style-bs.css" />
 </head>
+
 <body>
-    <header>
-
+    <header class="bg-orange" id="top">
+        <div class="container">
+            <div class="text-center row align-items-center">
+                <!-- en-tête de la page avec généralement le titre -->
+                <h1>Formation HTML5 CSS3</h1>
+            </div>
+        </div>
     </header>
-    <nav>
-
+    <nav class="navbar navbar-expand-lg bg-orange">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="./index.html" title="Lien vers la page d'accueil">
+                            Accueil
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./article.html" title="Lien vers l'article'">
+                            Article
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./cssgrid.html" title="liens vers la page des grilles en CSS">Grilles CSS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="./exo-grid.html" title="liens vers la page exemple grilleCSS">Ex Grilles</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="./bootstrap.html" title="liens vers la page en bootstrap">Boostrap</a>
+                    </li>
+                    <!--
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Coucou
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">Action</a></li>
+                            <li>
+                                <hr class="dropdown-divider my-dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Another action</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link disabled">Disabled</a>
+                    </li>
+                    -->
+                </ul>
+            </div>
+        </div>
     </nav>
-    <main>
-        <section>
-            <article>
+    <main class="container">
+        <section class="row">
+            <article class="col-sm-6 col-xl-6 col-xxl-6">
                 <header>
                     <h2>Introduction</h2>
                 </header>
@@ -65,15 +124,15 @@ aliquid rerum architecto temporibus
 fugit!
                     </pre>
                 </main>
-                <footer>
+                <footer class="text-center">
                     <a href="./article.html" title="Lien vers l'article">
-                        <button>
+                        <button class="btn btn-outline-primary">
                             Lire plus
                         </button>
                     </a>
                 </footer>
             </article>
-            <article>
+            <article class="col-md-6 col-xl-6 col-xxl-6">
                 <header>
                     <h2>Balises sur le texte</h2>
                 </header>
@@ -106,18 +165,18 @@ fugit!
                 </main>
                 <footer>
                     <a href="./article.html" title="Lien vers l'article">
-                        <button>
+                        <button class="btn btn-outline-primary">
                             Lire plus
                         </button>
                     </a>
                 </footer>
             </article>
-            <article>
+            <article class="col-xxl-6">
                 <header>
                     <h2>Les tableaux en HTML</h2>
                 </header>
                 <main>
-                    <table>
+                    <table class="table">
                         <caption>Le classement des meilleures jeu 1998</caption>
                         <thead>
                             <tr>
@@ -209,13 +268,13 @@ fugit!
                 </main>
                 <footer>
                     <a href="./article.html" title="Lien vers l'article">
-                        <button>
+                        <button class="btn btn-outline-primary">
                             Lire plus
                         </button>
                     </a>
                 </footer>
             </article>
-            <article>
+            <article class="col-xxl-6">
                 <header>
                     <h2>Intégrer des images en HTML</h2>
                 </header>
@@ -229,11 +288,12 @@ fugit!
                         HTML), il faut ajouter l'attribut alt, qui défini un texte alternatif au cas ou l'image serait
                         "cassée", le texte s'affichera en lieu et place de l'image<br />
                         <code>&lt;img src="./images/image.png" alt="une image exemple" /&gt;</code><br />
-                        <img src="./images/image.png" alt="une image avec la balise img" /> <br />coucou
+                        <img class="img-fluid" src="./images/image.png" alt="une image avec la balise img" />
+                        <br />coucou
                     </p>
                     <a href="./images/skeletor-poster-masters-of-the-universe.jpg" target="_blank"
                         title="afficher l'image dans un nouvel onglet">
-                        <img src="./images/skeletor-poster-masters-of-the-universe.jpg"
+                        <img class="img-fluid" src="./images/skeletor-poster-masters-of-the-universe.jpg"
                             alt="Skeletor par James White" />
                     </a>
                     <p>
@@ -242,7 +302,8 @@ fugit!
                         le SEO
                     </p>
                     <figure>
-                        <img src="./images/batman-d-apres-bruce-timm-2oaz.jpg" alt="Batman par Bruce Timm" />
+                        <img class="img-fluid" src="./images/batman-d-apres-bruce-timm-2oaz.jpg"
+                            alt="Batman par Bruce Timm" />
                         <figcaption>
                             Batman par Bruce Timm
                             Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus corporis repellendus
@@ -253,7 +314,96 @@ fugit!
                 </main>
                 <footer>
                     <a href="./article.html" title="Lien vers l'article">
-                        <button>
+                        <button class="btn btn-outline-primary">
+                            Lire plus
+                        </button>
+                    </a>
+                </footer>
+            </article>
+        </section>
+        <section class="row">
+            <article>
+                <header>
+                    <h2>Les media vidéo et audio</h2>
+                </header>
+                <main>
+                    <p>
+                        Les media vidéo et audio s'affichent par le biais de la balise <code>&lt;video&gt;</code> pour
+                        les video,
+                        et <code>&lt;audio&gt;</code> pour l'audio
+                    </p>
+                    <h4>la balise video</h4>
+                    <p>
+                        deux façons de l'utiliser
+                    </p>
+                    <figure>
+                        <video class="img-fluid" src="./media/Fallout-4-Launch-Trailer.mp4" muted
+                            poster="./images/cropped-wallhaven-fallout-4-01-3-1536x922.jpg" controls></video>
+                        <figcaption>
+                            Vidéo du trailler de lancement de Fallout 4
+                        </figcaption>
+                    </figure>
+                    <p>
+                        Ici, la source de la vidéo est directement appelée dans les attributs de la balise video, mais
+                        certains formats ne sont supportés par tous les navigateurs.
+                    </p>
+                    <p>
+                        Si on héberge des vidéos et qu'on veut proposer des formats adaptés aux navigateur et bande
+                        passante du visiteur,
+                        il faut préciser plusieurs source de la même vidéo, entre <code>&lt;video&gt;</code> et
+                        <code>&lt;/video&gt;</code>.
+                        Le navigateur fera le choix de la source la plus adaptée.
+                    </p>
+                    <figure>
+                        <video class="img-fluid" controls muted preload="auto">
+                            <source src="./media/Big_Buck_Bunny_360_10s_1MB.webm" type="video/webm" />
+                            <source src="./media/Big_Buck_Bunny_360_10s_1MB.mp4" type="video/mp4" />
+                        </video>
+                        <figcaption>
+                            Extrait de big buck bunny
+                        </figcaption>
+                    </figure>
+                    <h4>La balise audio</h4>
+                    <figure>
+                        <audio controls>
+                            <source src="./media/diablo_town.mp3" type="audio/mp3" />
+                        </audio>
+                    </figure>
+                </main>
+                <footer>
+                    <a href="./article.html" title="Lien vers l'article">
+                        <button class="btn-primary">
+                            Lire plus
+                        </button>
+                    </a>
+                </footer>
+            </article>
+            <article>
+                <header>
+                    <h2>Les média hébergés sur un site tier</h2>
+                </header>
+                <main>
+                    <p>
+                        Youtube, dailymotion, etc proposent de partager leurs contenu vidéo via des cadres intégrés
+                        (iframe) dont ils fournissent le code HTML dans leurs boutons de partage.
+                    </p>
+                    <h3>Paratgé par youtube</h3>
+                    <figure class="ratio ratio-16x9">
+                        <iframe src="https://www.youtube.com/embed/3vLHelBuTRM"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                    </figure>
+                    <h3>Partagé par Dailymotion</h3>
+                    <figure class="ratio ratio-16x9">
+                        <iframe frameborder="0" type="text/html"
+                            src="https://www.dailymotion.com/embed/video/x9e7gr" width="100%" height="100%"
+                            allowfullscreen title="Dailymotion Video Player"></iframe>
+                    </figure>
+                </main>
+                <footer>
+                    <a href="./article.html" title="Lien vers l'article">
+                        <button class="btn-primary">
                             Lire plus
                         </button>
                     </a>
@@ -261,8 +411,14 @@ fugit!
             </article>
         </section>
     </main>
-    <footer>
-
+    <footer class="bg-orange">
+        <div class="container">
+            <div class="row align-items-center">
+                <!-- pied de page -->
+                <a href="#top" title="revenir en haut de la page">Haut de la page</a>
+            </div>
+        </div>
     </footer>
 </body>
+
 </html>

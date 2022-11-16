@@ -1,0 +1,27 @@
+@import url('./edosz.css');
+
+h1{
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+h1, .h1,
+h2, .h2,
+h3, .h3,
+h4, .h4,
+h5, .h5,
+h6, .h6{
+    font-family: 'edosz';
+}
+
+.bg-orange{
+    background-color: #f29b30;
+}
+
+.my-dropdown-divider{
+    border-top: 1px solid #f29b30;
+}
+
+body > header > div > div, body > footer > div > div{
+    height: 100px;
+}
