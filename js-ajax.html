@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formation HTML5 - CSS3</title>
+    <!-- Commentaire en HTML -->
+    <!-- Ici on ajoute l'appel vers les fichier CSS et aussi de script Javascript -->
+    <link rel="stylesheet" href="./css/style.css" media="screen" />
+    <script src="./js/functions.js"></script>
+    <script>
+        window.addEventListener('DOMContentLoaded', function () {
+            let buttonsRead = document.querySelectorAll('button.read');
+            let resultTHead = document.querySelectorAll('#result thead');
+            let resultTBody = document.querySelectorAll('#result tbody');
+            buttonsRead.forEach(btn=>{
+                btn.addEventListener('click', ()=>{
+                    /*console.log(btn.dataset.url);*/
+                    let url = btn.dataset.url;
+                    fetch(url)
+                    .then(function(reponse){
+                        return reponse.json();
+                    })
+                    .then(function(data){
+                        console.log(data);
+                        let tabResult = jsonToTable(data);
+                        console.log(tabResult);
+                    });
+                });
+            });
+        });
+
+    </script>
+</head>
+
+<body>
+    <header id="top">
+        <!-- en-tête de la page avec généralement le titre -->
+        <h1>Formation HTML5 CSS3</h1>
+    </header>
+    <nav>
+        <!-- navigation principale du site -->
+        <ul>
+            <li>
+                <a href="./index.html" title="Lien vers la page d'accueil">
+                    Accueil
+                </a>
+            </li>
+            <li>
+                <a href="./article.html" title="Lien vers l'article'">
+                    Article
+                </a>
+            </li>
+            <li>
+                <a href="./cssgrid.html" title="liens vers la page des grilles en CSS">Grilles CSS</a>
+            </li>
+            <li>
+                <a href="./exo-grid.html" title="liens vers la page exemple grilleCSS">Ex Grilles</a>
+            </li>
+            <li>
+                <a href="./bootstrap.html" title="liens vers la page en bootstrap">Boostrap</a>
+            </li>
+            <li>
+                <a href="./article-animation.html" title="liens vers la page des animations CSS">Animation CSS</a>
+            </li>
+            <li>
+                <a href="./js-base.html" title="liens vers la page javascript bases">Javascript Bases</a>
+            </li>
+            <li>
+                <a href="./js-ajax.html" title="liens vers la page javascript ajax">Javascript ajax</a>
+            </li>
+        </ul>
+    </nav>
+    <main>
+        <!-- contenu principal de la page -->
+        <section>
+            <article>
+                <h2>Ajax avec Javascript</h2>
+                <p>
+                    Pour utiliser ajax avec js, sans regarder du côté des fonctions 
+                    type fetch, il faut instancier une objet de type XmlHttpRequest (XHR). 
+                    En code ça donnait
+                </p>
+                <textarea disabled>var xhr = null;
+// vérification du navigateur : supporte-t'il ajax
+if(window.XMLHttpRequest || window.ActiveXObject){
+    //le navigateur supporte ajax
+    if(window.ActiveXObject){
+        //navigateur microsoft type ie
+        try{
+            xhr = new ActiveXobject("Msxml2.XMLHTTP");
+        }catch(e){
+            xhr = new ActiveXobject("Microsoft.XMLHTTP");
+        }
+    }else{
+        //pas IE
+        xhr = new XmlHttpRequest();
+    }
+}else{
+    //pas d'ajax
+    alert("votre navigateur ne supporte pas l'objet XMLHttpRequest");
+    return;
+}</textarea>
+                <p>
+                    Cette fonction est étudiée pour prendre en compte les divers navigateurs et 
+                    leurs compatibilité avec XHR
+                </p>
+            </article>
+            <article>
+                <header>
+                    <h2>
+                        AJAX - Fetch
+                    </h2>
+                </header>
+                <main>
+                    <h3>xhr : Xml Http Request</h3>
+                    <p>
+                        fetch est la façon récente (2015) d'aller rechercher des flux de données sur une ressource exterieur.
+                    </p>
+                    <p>
+                        <code>
+                            fetch( 'adresse internet de la ressource' )<br />
+                            .then( function(reponse){ <br/>
+                            &nbsp;&nbsp;&nbsp;&nbsp;/* .then récupère le flux de données renvoyé par fetch */<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;return reponse.json(); <br />
+                            })<br />
+                            .then( function(data){ <br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;/* ici, .then récupère dans la variable data le return du .then précédent*/<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;/*code du traitement des données */<br />
+                            })<br />
+                            .catch( function(error){ <br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;/* si lefetch ou les then précédents osont en erreur, on la récupère ici dans la variable error*/<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;/*code du traitement de l'erreur*/<br />
+                            })<br />
+                            .finally( function(){<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;/* que le fetch ai réussi ou non, le code de .finally sera éxécuté */<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;/* code a exécuter après la tentative réussie ou non de fetch*/<br />
+                            });
+
+                        </code>
+                    </p>
+                </main>
+            </article>
+        </section>
+        <section>
+                <article>
+                    <h2>Affichage des utilisateurs</h2>
+                    <p>
+                        <button class="read btn-primary" data-url="../ressources/users.json">
+                            Users.json
+                        </button>
+                        <button class="read btn-primary" data-url="../ressources/bdd.json">
+                            bdd.json
+                        </button>
+                    </p>
+            </article>
+            <article>
+                <header>
+                    <h2>Suggestion utilisateurs</h2>
+                </header>
+                <main>
+                    <h3>Utilisateur dans users</h3>
+                    <p>
+                        <input type="text" id="searchUser" value="" />
+                    </p>
+                </main>
+            </article>
+        </section>
+        <section>
+            <article>
+                <h2>Résultats</h2>
+                <table id="result">
+                    <thead>
+                        
+                    </thead>
+                    <tbody>
+
+                    </tbody>
+                </table>
+            </article>
+        </section>
+    </main>
+    <footer>
+        <!-- pied de page -->
+        <a href="#top" title="revenir en haut de la page">Haut de la page</a>
+    </footer>
+    <script>
+        console.log('la page est chargée');
+    </script>
+</body>
+
+</html>
