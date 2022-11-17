@@ -640,6 +640,66 @@ ${personnage2.prenomHeros} ${personnage2.nomHeros} : ${personnage2.coupSpecial()
             ];
 
             console.log(fruitEtLegumes);
+            fruitEtLegumes.sort();
+            fruitEtLegumes2 = fruitEtLegumes.slice();
+            let tabTemp = [];
+            let tabDoublons = [];
+            /* 
+            le tableau tabTemp est un fait un tableau dont les clefs sont les nom des fruits plutôt qu'un indice 
+            si la "case" avec une clef n'existe pas, on la crée avec la valeur 1 (le fruit existe une fois)
+            si la "case" avec une clef existe, on augmente de 1 sa valeur
+            */
+           fruitEtLegumes.map(function(value){
+               if(tabTemp[value] === undefined){
+                   tabTemp[value] = 1;
+                }else{
+                    tabTemp[value] = tabTemp[value] + 1;
+                }
+            });
+
+            console.table(tabTemp);
+            
+            fruitEtLegumes.splice(0, fruitEtLegumes.length);
+            
+            for(key in tabTemp){
+                fruitEtLegumes.push(key);
+                if(tabTemp[key] > 1){
+                    tabDoublons.push([key, tabTemp[key]]);
+                }
+            }
+            
+            console.log('fruitEtLegumes',fruitEtLegumes);
+            console.log('tabDoublons')
+            console.table(tabDoublons);
+            
+            /*
+            Le tableai tabTemp est en fait une hérésie en JS, c'est la permissivité de JS qui permet de faire cela
+            il faut en vérité passer par un objet instance de la classe Map().
+            */
+            let collectionTemp = new Map();
+            fruitEtLegumes2.map(function(value){
+                if(collectionTemp.get(value)){
+                    collectionTemp.set(value, collectionTemp.get(value) + 1);
+                }else{
+                    collectionTemp.set(value, 1);
+                }
+            });
+
+            console.log(collectionTemp);
+            
+            let fruitEtLegumesCollec = [];
+            let tabDoublonsCollec = [];
+            collectionTemp.forEach(function(value, key){
+                console.log(key, value);
+                fruitEtLegumesCollec.push(key)
+                if(collectionTemp.get(key) > 1){
+                    tabDoublonsCollec.push([key, value]);
+                }
+            });
+
+            console.log('fruitEtLegumesCollec', fruitEtLegumesCollec);
+            console.log('tabDoublonsCollec', tabDoublonsCollec);
+
         });
 
     </script>
@@ -682,6 +742,19 @@ ${personnage2.prenomHeros} ${personnage2.nomHeros} : ${personnage2.coupSpecial()
     </nav>
     <main>
         <!-- contenu principal de la page -->
+        <section>
+            <article>
+                <header>
+                    <h2>Javascript Rappels</h2>
+                </header>
+                <main>
+                    <p>
+                        On va faire un petit rappel de javascript
+                        en utilisant la console du navigateur.
+                    </p>
+                </main>
+            </article>
+        </section>
         <section>
             <article>
                 <header>
@@ -846,19 +919,6 @@ ${personnage2.prenomHeros} ${personnage2.nomHeros} : ${personnage2.coupSpecial()
                             es6
                         </a>
                     </p>
-            </article>
-        </section>
-        <section>
-            <article>
-                <header>
-                    <h2>Javascript Rappels</h2>
-                </header>
-                <main>
-                    <p>
-                        On va faire un petit rappel de javascript
-                        en utilisant la console du navigateur.
-                    </p>
-                </main>
             </article>
         </section>
     </main>
