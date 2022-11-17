@@ -649,50 +649,50 @@ ${personnage2.prenomHeros} ${personnage2.nomHeros} : ${personnage2.coupSpecial()
             si la "case" avec une clef n'existe pas, on la crée avec la valeur 1 (le fruit existe une fois)
             si la "case" avec une clef existe, on augmente de 1 sa valeur
             */
-           fruitEtLegumes.map(function(value){
-               if(tabTemp[value] === undefined){
-                   tabTemp[value] = 1;
-                }else{
+            fruitEtLegumes.map(function (value) {
+                if (tabTemp[value] === undefined) {
+                    tabTemp[value] = 1;
+                } else {
                     tabTemp[value] = tabTemp[value] + 1;
                 }
             });
 
             console.table(tabTemp);
-            
+
             fruitEtLegumes.splice(0, fruitEtLegumes.length);
-            
-            for(key in tabTemp){
+
+            for (key in tabTemp) {
                 fruitEtLegumes.push(key);
-                if(tabTemp[key] > 1){
+                if (tabTemp[key] > 1) {
                     tabDoublons.push([key, tabTemp[key]]);
                 }
             }
-            
-            console.log('fruitEtLegumes',fruitEtLegumes);
+
+            console.log('fruitEtLegumes', fruitEtLegumes);
             console.log('tabDoublons')
             console.table(tabDoublons);
-            
+
             /*
             Le tableai tabTemp est en fait une hérésie en JS, c'est la permissivité de JS qui permet de faire cela
             il faut en vérité passer par un objet instance de la classe Map().
             */
             let collectionTemp = new Map();
-            fruitEtLegumes2.map(function(value){
-                if(collectionTemp.get(value)){
+            fruitEtLegumes2.map(function (value) {
+                if (collectionTemp.get(value)) {
                     collectionTemp.set(value, collectionTemp.get(value) + 1);
-                }else{
+                } else {
                     collectionTemp.set(value, 1);
                 }
             });
 
             console.log(collectionTemp);
-            
+
             let fruitEtLegumesCollec = [];
             let tabDoublonsCollec = [];
-            collectionTemp.forEach(function(value, key){
+            collectionTemp.forEach(function (value, key) {
                 console.log(key, value);
                 fruitEtLegumesCollec.push(key)
-                if(collectionTemp.get(key) > 1){
+                if (collectionTemp.get(key) > 1) {
                     tabDoublonsCollec.push([key, value]);
                 }
             });
@@ -708,7 +708,7 @@ ${personnage2.prenomHeros} ${personnage2.nomHeros} : ${personnage2.coupSpecial()
             console.log(headerPrinc);
             let allP = document.querySelectorAll('p');
             console.log(allP);
-            allP.forEach(function(value){
+            allP.forEach(function (value) {
                 console.log(value);
             });
 
@@ -717,12 +717,12 @@ ${personnage2.prenomHeros} ${personnage2.nomHeros} : ${personnage2.coupSpecial()
             on peut aussi abonner des éléments à des évènements
             */
 
-            headerPrinc.addEventListener('click', function(){
+            headerPrinc.addEventListener('click', function () {
                 console.log('on a cliquer sur le titre principal de la page');
             });
 
-            allP.forEach(function(paragraphe){
-                paragraphe.addEventListener('click', function(){
+            allP.forEach(function (paragraphe) {
+                paragraphe.addEventListener('click', function () {
                     //console.log(paragraphe.innerHTML);
                 });
             });
@@ -738,14 +738,14 @@ ${personnage2.prenomHeros} ${personnage2.nomHeros} : ${personnage2.coupSpecial()
             */
 
             let tableWiki = document.querySelector('table.wikitable');
-            tableWiki.addEventListener('click', function(event){
+            tableWiki.addEventListener('click', function (event) {
                 console.log(event);
                 console.log(event.target);
                 console.log(event.target.innerHTML);
             });
 
             let tableCoord = document.querySelector('table.coord');
-            tableCoord.addEventListener('click', function(event){
+            tableCoord.addEventListener('click', function (event) {
                 console.log(event.target.dataset);
                 console.log(event.target.parentNode.dataset.line);
                 console.log(event.target.dataset.col);
@@ -754,31 +754,57 @@ ${personnage2.prenomHeros} ${personnage2.nomHeros} : ${personnage2.coupSpecial()
             /* dataset data-module */
             let allPDataModule = document.querySelectorAll('p[data-module]');
             //console.log(allPDataModule);
-            allPDataModule.forEach(function(paragraphe){
-                switch(paragraphe.dataset.module){
+            allPDataModule.forEach(function (paragraphe) {
+                switch (paragraphe.dataset.module) {
                     case 'color':
                         let color = paragraphe.dataset.color || '#f00';
-                        paragraphe.addEventListener('mouseover', function(){
+                        paragraphe.addEventListener('mouseover', function () {
                             this.style.setProperty('color', color);
                         });
-                        paragraphe.addEventListener('mouseleave', function(){
+                        paragraphe.addEventListener('mouseleave', function () {
                             this.style.removeProperty('color');
                         });
-                    break;
+                        break;
                     case 'font':
                     case 'magie':
                         let weight = paragraphe.dataset.weight || '900';
-                        paragraphe.addEventListener('mouseover', function(){
+                        paragraphe.addEventListener('mouseover', function () {
                             this.style.setProperty('font-weight', weight);
                         });
-                        paragraphe.addEventListener('mouseleave', function(){
+                        paragraphe.addEventListener('mouseleave', function () {
                             this.style.removeProperty('font-weight');
                         });
-                    break;
+                        break;
                     case 'after':
                     default:
                     /* code */
                 }
+            });
+
+            /* puisance 4 */
+            let actualPawn = 'pionRouge';
+            document.querySelectorAll('#p4 th').forEach(function (th) {
+                let coord = 0;
+                th.addEventListener('click', function () {
+                    coord = th.dataset.col;
+                    for (i = 6; i > 0; i--) {
+                        let cell = document.querySelector(`td[data-col="${coord}"][data-row="${i}"]`);
+                        if ('&nbsp;' === cell.innerHTML) {
+                            cell.innerHTML = '';
+                            let pion = document.createElement('div');
+                            pion.classList.add(actualPawn);
+                            cell.appendChild(pion);
+                            actualPawn = ('pionRouge' === actualPawn) ? 'pionJaune' : 'pionRouge';
+                            break;
+                        }
+                    }
+                });
+            });
+
+            document.querySelector('#resetGrid').addEventListener('click', function(){
+                document.querySelectorAll('#p4 td').forEach(function(td){
+                    td.innerHTML = '&nbsp;';
+                });
             });
 
         });
@@ -1009,11 +1035,11 @@ ${personnage2.prenomHeros} ${personnage2.nomHeros} : ${personnage2.coupSpecial()
                     DOM : Document Object Model
                 </p>
                 <p>
-                    Javascript permet de manipuler le DOM, c'est dire 
+                    Javascript permet de manipuler le DOM, c'est dire
                     le HTML de la page dans laquelle il est exécuté.
                 </p>
                 <p>
-                    Pour pouvoir manipuler le HTML avec javascript il faut que le DOM 
+                    Pour pouvoir manipuler le HTML avec javascript il faut que le DOM
                     soit complètement chargé.
                 </p>
                 <ul>
@@ -1025,7 +1051,7 @@ ${personnage2.prenomHeros} ${personnage2.nomHeros} : ${personnage2.coupSpecial()
                 </p>
                 <ul>
                     <li>Évènement : une action ciblée sur le DOM</li>
-                    <li>Action : Modifier, lire, ajouter, supprimer, ect. 
+                    <li>Action : Modifier, lire, ajouter, supprimer, ect.
                         des éléments du DOM</li>
                 </ul>
                 <table class="coord" width="80%">
@@ -1133,6 +1159,79 @@ ${personnage2.prenomHeros} ${personnage2.nomHeros} : ${personnage2.coupSpecial()
                     vitae voluptate, quasi rerum! Debitis
                     aliquid aliquam et suscipit ab!
                 </p>
+                <h3>Grille de puissance </h3>
+                <button class="btn-primary" id="resetGrid">
+                    Vider la grille
+                </button>
+                <table id="p4">
+                    <thead>
+                        <tr>
+                            <th data-col="1" class="text-center"> &darr; </th>
+                            <th data-col="2" class="text-center"> &darr; </th>
+                            <th data-col="3" class="text-center"> &darr; </th>
+                            <th data-col="4" class="text-center"> &darr; </th>
+                            <th data-col="5" class="text-center"> &darr; </th>
+                            <th data-col="6" class="text-center"> &darr; </th>
+                            <th data-col="7" class="text-center"> &darr; </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-col="1" data-row="1">&nbsp;</td>
+                            <td data-col="2" data-row="1">&nbsp;</td>
+                            <td data-col="3" data-row="1">&nbsp;</td>
+                            <td data-col="4" data-row="1">&nbsp;</td>
+                            <td data-col="5" data-row="1">&nbsp;</td>
+                            <td data-col="6" data-row="1">&nbsp;</td>
+                            <td data-col="7" data-row="1">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td data-col="1" data-row="2">&nbsp;</td>
+                            <td data-col="2" data-row="2">&nbsp;</td>
+                            <td data-col="3" data-row="2">&nbsp;</td>
+                            <td data-col="4" data-row="2">&nbsp;</td>
+                            <td data-col="5" data-row="2">&nbsp;</td>
+                            <td data-col="6" data-row="2">&nbsp;</td>
+                            <td data-col="7" data-row="2">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td data-col="1" data-row="3">&nbsp;</td>
+                            <td data-col="2" data-row="3">&nbsp;</td>
+                            <td data-col="3" data-row="3">&nbsp;</td>
+                            <td data-col="4" data-row="3">&nbsp;</td>
+                            <td data-col="5" data-row="3">&nbsp;</td>
+                            <td data-col="6" data-row="3">&nbsp;</td>
+                            <td data-col="7" data-row="3">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td data-col="1" data-row="4">&nbsp;</td>
+                            <td data-col="2" data-row="4">&nbsp;</td>
+                            <td data-col="3" data-row="4">&nbsp;</td>
+                            <td data-col="4" data-row="4">&nbsp;</td>
+                            <td data-col="5" data-row="4">&nbsp;</td>
+                            <td data-col="6" data-row="4">&nbsp;</td>
+                            <td data-col="7" data-row="4">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td data-col="1" data-row="5">&nbsp;</td>
+                            <td data-col="2" data-row="5">&nbsp;</td>
+                            <td data-col="3" data-row="5">&nbsp;</td>
+                            <td data-col="4" data-row="5">&nbsp;</td>
+                            <td data-col="5" data-row="5">&nbsp;</td>
+                            <td data-col="6" data-row="5">&nbsp;</td>
+                            <td data-col="7" data-row="5">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td data-col="1" data-row="6">&nbsp;</td>
+                            <td data-col="2" data-row="6">&nbsp;</td>
+                            <td data-col="3" data-row="6">&nbsp;</td>
+                            <td data-col="4" data-row="6">&nbsp;</td>
+                            <td data-col="5" data-row="6">&nbsp;</td>
+                            <td data-col="6" data-row="6">&nbsp;</td>
+                            <td data-col="7" data-row="6">&nbsp;</td>
+                        </tr>
+                    </tbody>
+                </table>
             </article>
         </section>
     </main>

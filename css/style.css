@@ -183,6 +183,33 @@ figure{
     transform:scale(1.2);
 }
 
+#p4 td {
+    height: 40px;
+    width: 40px;
+}
+
+.pionRouge{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: red;
+    margin: 0;
+    border: 2px solid black;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.pionJaune{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: yellow;
+    margin: 0;
+    border: 2px solid black;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 figure.video{
     position:relative;
     padding-bottom:56.25%;
