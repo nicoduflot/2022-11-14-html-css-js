@@ -413,10 +413,107 @@
             var1 => var1*2;
             */
 
-            let foundAll2 = arrayNum.filter((element)=> 20 < element);
+            let foundAll2 = arrayNum.filter((element) => 20 < element);
             console.log(foundAll2);
 
-            
+            /* objet litéral */
+
+            let objLit = {
+                nom: 'Doe',
+                prenom: 'John',
+                age: 42,
+                coucouObj: function () {
+                    return `coucou ${this.nom}`;
+                }
+            };
+
+            console.log(objLit);
+            console.log(typeof objLit);
+            console.log(objLit.nom);
+            console.log(objLit.prenom);
+            console.log(objLit.age);
+            console.log(objLit.coucouObj());
+
+            /* 
+            destructuration 
+            méthode d'assignation des variables
+            */
+
+            let liste = [1, 2, 3, 4];
+            /* 
+            assigner chacune des valeur du tableau àaux variables suivantes a, b, et c
+            let a = liste[0];
+            let b = liste[1];
+            let c = liste[2];
+            */
+
+            /* en utilisant le principe de destructuration */
+
+            let [a, b, c] = liste;
+            console.log(`a : ${a}, b : ${b}, c : ${c}`);
+
+            let [d, , f, g] = liste;
+            console.log(`d : ${d}, f : ${f}, g : ${g}`);
+
+            let [h, i, j, k = 0, l = 5] = liste;
+            console.log(`h : ${h}, i : ${i}, j : ${j}, k : ${k}, l : ${l}`);
+
+            /* spread opérator ou opérateur variadique ...valeurs */
+            function truc(unTruc = 12, uneOption = false, ...valeurs) {
+                let [a = 0, b = false, c = 'Compta'] = valeurs;
+                console.log(`unTruc : ${unTruc}, unOption : ${uneOption}, valeurs : ${valeurs}`);
+                console.log(`a : ${a}, b : ${b}, c : ${c}`);
+                console.log(typeof valeurs);
+            }
+
+            truc(34, true, 23, 'papa', 'RH', 12, 654, 'toto');
+
+            /* échange de variables */
+            let number1 = 42;
+            let number2 = 101;
+
+            console.log(`avant échange : number1 : ${number1}, number2 : ${number2}`);
+            /*
+            let tampon = number1;
+            number1 = number2;
+            number2 = tampon;
+            */
+
+            [number1, number2] = [number2, number1];
+            console.log(`après échange : number1 : ${number1}, number2 : ${number2}`);
+
+            /* la destructuration avec d'objet */
+            let objet = {
+                lastName: 'Sno',
+                firstName: 'Jon',
+                job: 'NightWatch',
+                knowledge: (prenom = 'you', nom = 'Moron') => {
+                    return `You know not'in ${prenom} ${nom}`;
+                }
+            };
+
+            console.log(objet.firstName);
+            console.log(objet.lastName);
+            console.log(objet.knowledge(objet.firstName, objet.lastName));
+
+            console.log('destructuration objet');
+            let { firstName, lastName, job, knowledge } = objet;
+
+            console.log(firstName);
+            console.log(lastName);
+            console.log(knowledge(firstName, lastName));
+            console.log('destructuration objet avec alias');
+            let {
+                firstName: prenom2,
+                lastName: nom2,
+                job: boulot,
+                knowledge: vanne
+            } = objet;
+
+            console.log(prenom2);
+            console.log(nom2);
+            console.log(vanne());
+
 
         });
 
