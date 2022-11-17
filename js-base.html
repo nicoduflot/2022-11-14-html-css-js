@@ -700,6 +700,87 @@ ${personnage2.prenomHeros} ${personnage2.nomHeros} : ${personnage2.coupSpecial()
             console.log('fruitEtLegumesCollec', fruitEtLegumesCollec);
             console.log('tabDoublonsCollec', tabDoublonsCollec);
 
+            console.log(document.getElementById('top'));
+            console.log(document.querySelector('#top'));
+            console.log(document.querySelectorAll('p'));
+
+            let headerPrinc = document.querySelector('body > header');
+            console.log(headerPrinc);
+            let allP = document.querySelectorAll('p');
+            console.log(allP);
+            allP.forEach(function(value){
+                console.log(value);
+            });
+
+            /* 
+            on a déjà surveillé un évènement, celui du chargement de la page 
+            on peut aussi abonner des éléments à des évènements
+            */
+
+            headerPrinc.addEventListener('click', function(){
+                console.log('on a cliquer sur le titre principal de la page');
+            });
+
+            allP.forEach(function(paragraphe){
+                paragraphe.addEventListener('click', function(){
+                    //console.log(paragraphe.innerHTML);
+                });
+            });
+
+            let allTd = document.querySelectorAll('td');
+            //console.log(allTd);
+            /*
+            allTd.forEach(function(td){
+                td.addEventListener('click', function(event){
+                    console.log(event);
+                });
+            });
+            */
+
+            let tableWiki = document.querySelector('table.wikitable');
+            tableWiki.addEventListener('click', function(event){
+                console.log(event);
+                console.log(event.target);
+                console.log(event.target.innerHTML);
+            });
+
+            let tableCoord = document.querySelector('table.coord');
+            tableCoord.addEventListener('click', function(event){
+                console.log(event.target.dataset);
+                console.log(event.target.parentNode.dataset.line);
+                console.log(event.target.dataset.col);
+            });
+
+            /* dataset data-module */
+            let allPDataModule = document.querySelectorAll('p[data-module]');
+            //console.log(allPDataModule);
+            allPDataModule.forEach(function(paragraphe){
+                switch(paragraphe.dataset.module){
+                    case 'color':
+                        let color = paragraphe.dataset.color || '#f00';
+                        paragraphe.addEventListener('mouseover', function(){
+                            this.style.setProperty('color', color);
+                        });
+                        paragraphe.addEventListener('mouseleave', function(){
+                            this.style.removeProperty('color');
+                        });
+                    break;
+                    case 'font':
+                    case 'magie':
+                        let weight = paragraphe.dataset.weight || '900';
+                        paragraphe.addEventListener('mouseover', function(){
+                            this.style.setProperty('font-weight', weight);
+                        });
+                        paragraphe.addEventListener('mouseleave', function(){
+                            this.style.removeProperty('font-weight');
+                        });
+                    break;
+                    case 'after':
+                    default:
+                    /* code */
+                }
+            });
+
         });
 
     </script>
@@ -919,6 +1000,139 @@ ${personnage2.prenomHeros} ${personnage2.nomHeros} : ${personnage2.coupSpecial()
                             es6
                         </a>
                     </p>
+            </article>
+        </section>
+        <section>
+            <article>
+                <h2>Manipuler le DOM</h2>
+                <p>
+                    DOM : Document Object Model
+                </p>
+                <p>
+                    Javascript permet de manipuler le DOM, c'est dire 
+                    le HTML de la page dans laquelle il est exécuté.
+                </p>
+                <p>
+                    Pour pouvoir manipuler le HTML avec javascript il faut que le DOM 
+                    soit complètement chargé.
+                </p>
+                <ul>
+                    <li>Window : fenêtre</li>
+                    <li>Document : document HTML</li>
+                </ul>
+                <p class="clickMe">
+                    Pour manipuler le DOM avec javascript, deux concepts :
+                </p>
+                <ul>
+                    <li>Évènement : une action ciblée sur le DOM</li>
+                    <li>Action : Modifier, lire, ajouter, supprimer, ect. 
+                        des éléments du DOM</li>
+                </ul>
+                <table class="coord" width="80%">
+                    <tr data-line="1">
+                        <td data-col="1"> 1 - 1</td>
+                        <td data-col="2"> 1 - 2</td>
+                        <td data-col="3"> 1 - 3</td>
+                        <td data-col="4"> 1 - 4</td>
+                        <td data-col="5"> 1 - 5</td>
+                    </tr>
+                    <tr data-line="2">
+                        <td data-col="1">2 - 1</td>
+                        <td data-col="2">2 - 2</td>
+                        <td data-col="3">2 - 3</td>
+                        <td data-col="4">2 - 4</td>
+                        <td data-col="5">2 - 5</td>
+                    </tr>
+                    <tr data-line="3">
+                        <td data-col="1">3 - 1</td>
+                        <td data-col="2">3 - 2</td>
+                        <td data-col="3">3 - 3</td>
+                        <td data-col="4">3 - 4</td>
+                        <td data-col="5">3 - 5</td>
+                    </tr>
+                    <tr data-line="4">
+                        <td data-col="1">4 - 1</td>
+                        <td data-col="2">4 - 2</td>
+                        <td data-col="3">4 - 3</td>
+                        <td data-col="4">4 - 4</td>
+                        <td data-col="5">4 - 5</td>
+                    </tr>
+                    <tr data-line="5">
+                        <td data-col="1">5 - 1</td>
+                        <td data-col="2">5 - 2</td>
+                        <td data-col="3">5 - 3</td>
+                        <td data-col="4">5 - 4</td>
+                        <td data-col="5">5 - 5</td>
+                    </tr>
+                </table>
+            </article>
+        </section>
+        <section>
+            <article>
+                <h2>Les dataset (attribut data-*)</h2>
+                <p>
+                    Les attributs data- sont des attributs HTML dynamiques.
+                    Ce qui est dynamique : leurs noms et les valeurs qu'ils possèdent.
+                    Pour les utiliser, on crée dans la balise un attribut avec la forme suivante :
+                    <code>data-*="..."</code>, * sera le nom du dataset, ... sa valeur.
+                    par exemple <br />
+                    <code>
+                        &lt;img data-over="../images/test.png" src="../images/test-img.png" data-test="test" /&gt;
+                    </code><br />
+                    pour atteindre ce dataset : <br />
+                    <code>
+                        let urlOver = document.querySelector('img[data-over][data-test="test"]').dataset.over;
+                    </code>
+                </p>
+                <hr />
+                <p data-module="color">
+                    Lorem ipsum dolor sit amet,
+                    consectetur adipisicing elit.
+                    Sed, quidem! Quod sapiente consequatur
+                    eius in officia ducimus nisi, totam quo
+                    vitae voluptate, quasi rerum! Debitis
+                    aliquid aliquam et suscipit ab!
+                </p>
+                <p data-module="color" data-color="#09f">
+                    Lorem ipsum dolor sit amet,
+                    consectetur adipisicing elit.
+                    Sed, quidem! Quod sapiente consequatur
+                    eius in officia ducimus nisi, totam quo
+                    vitae voluptate, quasi rerum! Debitis
+                    aliquid aliquam et suscipit ab!
+                </p>
+                <p data-module="color" data-color="orange">
+                    Lorem ipsum dolor sit amet,
+                    consectetur adipisicing elit.
+                    Sed, quidem! Quod sapiente consequatur
+                    eius in officia ducimus nisi, totam quo
+                    vitae voluptate, quasi rerum! Debitis
+                    aliquid aliquam et suscipit ab!
+                </p>
+                <p data-module="font" data-weight="bold">
+                    Lorem ipsum dolor sit amet,
+                    consectetur adipisicing elit.
+                    Sed, quidem! Quod sapiente consequatur
+                    eius in officia ducimus nisi, totam quo
+                    vitae voluptate, quasi rerum! Debitis
+                    aliquid aliquam et suscipit ab!
+                </p>
+                <p data-module="magie">
+                    Lorem ipsum dolor sit amet,
+                    consectetur adipisicing &nbsp;elit.
+                    Sed, quidem! Quod sapiente consequatur
+                    eius in officia ducimus nisi, totam quo
+                    vitae voluptate, quasi rerum! Debitis
+                    aliquid aliquam et suscipit ab!
+                </p>
+                <p data-module="after">
+                    Lorem ipsum dolor sit amet,
+                    consectetur adipisicing elit.
+                    Sed, quidem! Quod sapiente consequatur
+                    eius in officia ducimus nisi, totam quo
+                    vitae voluptate, quasi rerum! Debitis
+                    aliquid aliquam et suscipit ab!
+                </p>
             </article>
         </section>
     </main>
