@@ -41,7 +41,7 @@
             /*
             la différence entre var et let est la portée des la variable déclarée
             */
-            function monPrenom(test){
+            function monPrenom(test) {
                 console.log(test + ' ' + prenom + ' ');
                 prenom = 'test';
                 let nom = 'test';
@@ -49,9 +49,9 @@
             }
 
             console.log(prenom, nom);
-            
+
             monPrenom('bla');
-            
+
             console.log(prenom, nom);
 
             /* constante */
@@ -63,7 +63,7 @@
             const HOSTFR = '456';
             const HOSTES = '789';
 
-            function connect(server, host){
+            function connect(server, host) {
                 /* code de la fonction */
             }
 
@@ -97,74 +97,74 @@
             console.log(unEntier + 4 + '4');
             console.log('4 ' + unEntier + 4);
             console.log('4 ' + (unEntier + 4));
-            console.log(`4 ${unEntier + 4}`); 
-                    /* 
-                    interpolation de texte 
-                    ou
-                    literal template
-                    */
-                    /*
-                    -   Soustraction
-                    *   Multiplication
-                    /   division
-                    %   Modulo (reste des division entière) 
-                    **  Puissance (remplace Math.pow())
-                    */
-                    console.log(`Math.pow(2,3)   : ${Math.pow(2,3)}
-2**3            : ${2**3}`);
-                    /*
-                Logiques
-                    && => ET (AND)
-                        true  && true   => true
-                        true  && false  => false
-                        false && true   => false
-                        false && false  => false
-                    || => OU (OR)
-                        true  || true   => true
-                        true  || false  => true
-                        false || true   => true
-                        false || false  => false
-                    ^ => OU Exclusif Binaire (XOR)
-                        true   ^ true   => false
-                        true   ^ false  => true
-                        false  ^ true   => true
-                        false  ^ false  => false
-                    ! => NON (NOT)
-                        !true           => false
-                        !false          => true
-
-                Incrémentation - Décrémentation
-                    ++ => incrémenter de 1
-                    -- => décrémenter de 1
-                        var++
-                        ++var
-
-                Comparaison
-                    > 
-                    <
-                    >=
-                    <=
-                    ==  => Comparaison non stricte  (on compare les valeurs)
-                    === => Comparaison stricte      (on compare les valeurs ET le type)
-                    !=  => Comparaison non stricte  (on compare les valeurs)
-                    !== => Comparaison stricte      (on compare les valeurs ET le type)
+            console.log(`4 ${unEntier + 4}`);
+            /* 
+            interpolation de texte 
+            ou
+            literal template
             */
+            /*
+            -   Soustraction
+            *   Multiplication
+            /   division
+            %   Modulo (reste des division entière) 
+            **  Puissance (remplace Math.pow())
+            */
+            console.log(`Math.pow(2,3)   : ${Math.pow(2, 3)}
+2**3            : ${2 ** 3}`);
+            /*
+        Logiques
+            && => ET (AND)
+                true  && true   => true
+                true  && false  => false
+                false && true   => false
+                false && false  => false
+            || => OU (OR)
+                true  || true   => true
+                true  || false  => true
+                false || true   => true
+                false || false  => false
+            ^ => OU Exclusif Binaire (XOR)
+                true   ^ true   => false
+                true   ^ false  => true
+                false  ^ true   => true
+                false  ^ false  => false
+            ! => NON (NOT)
+                !true           => false
+                !false          => true
+
+        Incrémentation - Décrémentation
+            ++ => incrémenter de 1
+            -- => décrémenter de 1
+                var++
+                ++var
+
+        Comparaison
+            > 
+            <
+            >=
+            <=
+            ==  => Comparaison non stricte  (on compare les valeurs)
+            === => Comparaison stricte      (on compare les valeurs ET le type)
+            !=  => Comparaison non stricte  (on compare les valeurs)
+            !== => Comparaison stricte      (on compare les valeurs ET le type)
+    */
             let y;
             console.log(y, typeof y);
-            if(y){
+            if (y) {
                 console.log('la variable y existe et est définie');
             }
 
-            if(undefined === y){
+            if (undefined === y) {
                 console.log('la variable y existe pas et n\'est pas définie');
             }
             y = false;
-            
-            if(undefined !== y ){
+
+            if (undefined !== y) {
                 console.log('la variable y existe et est définie');
             }
 
-            if(undefined !== y){
+            if (undefined !== y) {
                 console.log('la variable y existe pas et n\'est pas définie');
             }
             console.log(y, typeof y);
@@ -178,8 +178,246 @@
             "Chaîne".equal(b); // false
             */
 
+            /* Tableaux */
+            /*
+            var tab = new Array('Peugeot', 'Ford');
+            */
+            let cars = ['Peugeot', 'Ford'];
+            console.log(cars);
+            console.table(cars);
+            console.log(typeof cars);
+
+            cars[cars.length] = 'Hyundai';
+            /* pas la méthode à utiliser */
+            console.table(cars);
+            cars.push('Fiat');
+            cars.push('Renault', 'Citroën');
+            console.table(cars);
+
+            /* extraire les données d'un tableau */
+            /* le dernier élément .pop() */
+            console.log('------ .pop() ------');
+            let lastCarEntry = cars.pop();
+            console.log(cars);
+            console.log(lastCarEntry);
+
+            /* le premier élément .shift() */
+            console.log('------ .shift() ------');
+            let firstCarEntry = cars.shift();
+            console.log(cars);
+            console.log(firstCarEntry);
+
+            /* récupérer x éléments dans le tableau .splice() */
+            /* .spice() => 1 */
+            console.log('------ .splice() ------');
+            let middleCarEntry = cars.splice(1, 2);
+            console.log(cars);
+            console.log(middleCarEntry);
+            /* inserrer des éléments dans un tableau */
+            cars.splice(0, 0, middleCarEntry[0], middleCarEntry[1]);
+            console.log(cars);
+
+            /* copier une partie d'un tableau */
+            /* .slice() */
+            console.log('------ .slice() ------');
+            let someCars = cars.slice(1, 3);
+            console.log(cars);
+            console.log(someCars);
+
+            /* copier un tableau */
+            /*
+            let carsClone = cars;
+            console.log(carsClone);
+            console.log(cars);
+            carsClone.pop();
+            console.log(carsClone);
+            console.log(cars);
+            // ne crée pas une copie mais une nouvelle référence de la variable (équivalent à un alias)
+            */
+
+            let carsClone = cars.slice();
+            console.log(carsClone);
+            console.log(cars);
+            carsClone.pop();
+            console.log(carsClone);
+            console.log(cars);
+
+            cars.splice(2, 0, firstCarEntry, lastCarEntry);
+            console.log(cars);
+
+            console.log('------ les boucles ------');
+            /* boucle for */
+            console.log('------ for ------');
+            for (let i = 0; i < cars.length; i++) {
+                console.log(cars[i]);
+            }
+
+            /* boucle for in */
+            console.log('------ for in ------');
+            for (let index in cars) {
+                console.log(cars[index]);
+            }
+
+            /* depuis es6 boucle for of */
+            console.log('------ for of ------');
+            for (let value of cars) {
+                console.log(value);
+            }
+
+            console.log('------ méthode .entries avec for of ------');
+            /**
+             * es6 .entries()
+             * modèle objet,
+             * renvoi chaque élément du tableau sous forme d'un tableau contenant l'index et la valeur
+            */
+            for (let entry of cars.entries()) {
+                console.log(entry);
+            }
+
+            console.log('------ méthode .map() ------');
+            /*
+            équivalent d'un forEach mais propre aux tableaux, 
+            il est préférable d'utiliser cette méthode quand on utilise un tableau
+            */
+            cars.map(function (value, index, tab) {
+                console.log(value, index, tab);
+            });
+
+            let tabNumber = [1, 3, 4, 89, 123];
+            tabNumber.map(function (value, index, tab) {
+                console.log(value, index, tab);
+                tab[index] = value % 2;
+                console.log(value, index, tab);
+            });
+
+            console.log('------ méthode .foreach() ------');
+            /*
+            il faut privilégier le forEach pour les éléments 
+            itérables qui ne sont pas des tableaux
+            */
+            cars.forEach(function (value, index, tab) {
+                console.log(value, index, tab);
+            });
+
+            let tabNumber2 = [1, 3, 4, 89, 123];
+            tabNumber2.forEach(function (value, index, tab) {
+                console.log(value, index, tab);
+                tab[index] = value % 2;
+                console.log(value, index, tab);
+            });
+
+            console.log('----------- méthode .keys() ---------');
+            for (let key of cars.keys()) {
+                console.log(key, cars[key]);
+            }
+
+            /*  le tri */
+            carsClone = cars.slice();
+            console.log(carsClone);
+            carsClone.sort();
+            console.log(carsClone);
+            carsClone.sort().reverse();
+            console.log(carsClone);
+
+            /* les tableaux à "2 dimensions" */
+            let tab2d = [['Fiat', 1956], ['Kya', 1995], ['Kya', 1990], ['Ford', 1950]];
+            console.table(tab2d);
+            tab2d.sort();
+            console.table(tab2d);
+
+            /* se ne sont pas des vrai tableaux à 2 dimension */
+            let tableau2d = [['a', 'b', 'c'], [12, 13, 12, 15, 14], [10, 23, 56, 4]];
+            console.table(tableau2d);
+            /* afficher  */
+            console.log(tableau2d[1][1]);
+
+            /* utiliser une matrice devient difficile */
+            /* créer une matrice devient un peu galère */
+            let matrice = [
+                [1, 2, 3, 4, 5],
+                [12, 14, 75, 56, 42]
+            ];
+
+            /* pour parcourir la matrice */
+            console.log('--- parcourir la matrice "2d" ---------');
+            for (let value of matrice) {
+                let line = '';
+                for (subValue of value) {
+                    line += subValue + ' ';
+                    //console.log(subValue);
+                }
+                console.log(line);
+            }
+
+            console.log('--- parcourir la matrice "2d" ---------');
+            matrice.map(function (value, index) {
+                value.map(function (subValue, subIndex) {
+                    console.log(`X : ${index}, Y : ${subIndex} => ${subValue}`);
+                });
+            });
+
+            /* retrouver une ou des valeurs dans un tableau */
+            /* .find() => retourne la première occurence dans un tableau */
+
+            console.log('--------- .find() ------------');
+            let arrayNum = [5, 8, 12, 130, 5, 3, 44];
+            let found = arrayNum.find(function (element) {
+                return 20 < element;
+                /*
+                if(20 < element){
+                    return element;
+                }
+                */
+            });
+
+            console.log(found);
+
+            /* pour récupérertous les éléments correpsondant à une condition .filter() */
+            let foundAll = arrayNum.filter(function (element) {
+                return 20 < element;
+            });
+
+            console.log(foundAll);
+            console.table(foundAll);
+
+            /* Opérateur arrow */
+            /*
+            function(){
+                //code
+            }
+            devient
+            ()=>{
+                //code
+            }
+
+            function(var1, var2){
+                //code
+            }
+            devient
+            (var1, var2)=>{
+                //code
+            }
+
+            function(var1){
+                //code
+            }
+            devient
+            var1 => {
+                //code
+            }
+
+            function(var1){
+                return var1*2;
+            }
+            devient
+            var1 => var1*2;
+            */
+
+            let foundAll2 = arrayNum.filter((element)=> 20 < element);
+            console.log(foundAll2);
+
             
-            
+
         });
 
     </script>
