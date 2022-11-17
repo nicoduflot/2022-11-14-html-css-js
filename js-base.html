@@ -514,7 +514,132 @@
             console.log(nom2);
             console.log(vanne());
 
+            /*  */
 
+            let personnage1 = {
+                nomHeros: 'LeCanard',
+                prenomHeros: 'Herbert',
+                coupSpecial: function () {
+                    return 'Pichenette';
+                }
+            }
+
+            let personnage2 = {
+                nomHeros: 'LeDragon',
+                prenomHeros: 'Marvin',
+                coupSpecial: function () {
+                    return 'Tong Deum';
+                }
+            }
+
+            console.log(`
+${personnage1.prenomHeros} ${personnage1.nomHeros} : ${personnage1.coupSpecial()}
+${personnage2.prenomHeros} ${personnage2.nomHeros} : ${personnage2.coupSpecial()}
+            `);
+
+            [personnage1.coupSpecial, personnage2.coupSpecial] = [personnage2.coupSpecial, personnage1.coupSpecial];
+
+            console.log(`
+${personnage1.prenomHeros} ${personnage1.nomHeros} : ${personnage1.coupSpecial()}
+${personnage2.prenomHeros} ${personnage2.nomHeros} : ${personnage2.coupSpecial()}
+            `);
+
+            /* opératuer variadique ...valeurs  */
+            function sommeX(...valeurs) {
+                console.log(valeurs);
+                let resultat = 0;
+                for (let valeur of valeurs) {
+                    resultat = resultat + ((parseFloat(valeur)) ? parseFloat(valeur) : 0);
+                    /*
+                    ternaire 
+                    (condition)? resultat si vrai : resultat si faux
+                    */
+                }
+                return resultat;
+            }
+
+            console.log(sommeX(1, 2, 3, 4, 'toto', 5, 6, 7, 8, '9'));
+
+            /* function anonyme => fonction de rappel (function callback) */
+            let uneFonctionAnonyme = function (multiplicateur, ...valeurs) {
+                let resultat = 0;
+                for (let valeur of valeurs) {
+                    resultat = resultat + (((parseFloat(valeur)) ? parseFloat(valeur) : 0) * multiplicateur);
+                    /*
+                    ternaire 
+                    (condition)? resultat si vrai : resultat si faux
+                    */
+                }
+                return resultat;
+            };
+
+            console.log(uneFonctionAnonyme(1.1, 1, 2, 3, 4));
+
+            /* 
+            auto-exécution de fonction anonyme 
+            ( fonction anonyme(var1, var2){
+                //code
+            })('valeur de var 1', 'valeur de var2');
+            */
+
+            (function (multiplicateur, ...valeurs) {
+                let resultat = 0;
+                for (let valeur of valeurs) {
+                    resultat = resultat + (((parseFloat(valeur)) ? parseFloat(valeur) : 0) * multiplicateur);
+                    /*
+                    ternaire 
+                    (condition)? resultat si vrai : resultat si faux
+                    */
+                }
+                console.log(resultat);;
+            })(1.1, 1, 2, 3, 4);
+
+            /* opérateur arrow et les conséquences */
+            let objetCons = {
+                numbers: [1, 2, 3],
+                pourChaque: function () {
+                    console.log(this);
+                    let _this = this;
+                    this.numbers.forEach(function (value) {
+                        console.log(this);
+                        console.log(_this);
+                    });
+                },
+                pourChaque2: function () {
+                    console.log(this);
+                    this.numbers.forEach((value) => {
+                        console.log(this);
+                    });
+                },
+            };
+
+            console.log('pourChaque');
+            objetCons.pourChaque();
+            console.log('pourChaque2');
+            objetCons.pourChaque2();
+
+            /* 
+            créer un tableau avec des fruits et des légumes, avec deux fruits ou légumes en doublons 
+            modifier le tableau pour que : 
+                - les fruits et légumes soient triés par ordre alphabétiques
+                - que les doublons soient supprimés du tableau
+                - qu'on affiche un tableau des doublons et le nombre d'occurence de chaque doublons
+            */
+
+            let fruitEtLegumes = [
+                'fraise',
+                'bananes',
+                'mangue',
+                'choux',
+                'mangue',
+                'courgette',
+                'fraise',
+                'brocoli',
+                'haricot',
+                'mangue'
+            ];
+
+            console.log(fruitEtLegumes);
         });
 
     </script>
