@@ -6,7 +6,6 @@ function jsonToTable(data, search = ''){
     let tbody = '';
     let searchOK = ('' === search)?true:false;
     let compare = '';
-
     data.forEach(element => {
         tempLine = tempLine + '<tr>';
         for(key in element){
@@ -18,7 +17,7 @@ function jsonToTable(data, search = ''){
                 if(compare.indexOf(search) >= 0){
                     searchOK = true;
                 }
-                tempLine = tempLine + '<td>';
+                tempLine = tempLine + `<td data-${key}="${element[key]}">`;
                 tempLine = tempLine + ((compare.indexOf(search) >= 0 && '' !== search)?'<mark>': '');
                 tempLine = tempLine + element[key];
                 tempLine = tempLine + ((compare.indexOf(search) >= 0 && '' !== search)?'</mark>': '');
@@ -38,13 +37,10 @@ function jsonToTable(data, search = ''){
                         tempLine = tempLine + ((compare.indexOf(search) >= 0 && '' !== search)?'</mark>': '');
                     }
                 }
-                
                 tempLine = tempLine + '</td>';
             }
         }
-        
         tempLine = tempLine + '</tr>';
-
         /* vérification de la ligne valide à ajouter au tbody */
         if(searchOK){
             tbody = tbody + tempLine;
@@ -53,7 +49,6 @@ function jsonToTable(data, search = ''){
         searchOK = ('' === search)?true:false;
         tempLine = '';
     });
-
     thead = thead + '</tr>';
     return [thead, tbody]
 }
