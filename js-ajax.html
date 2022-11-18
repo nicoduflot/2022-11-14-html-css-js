@@ -8,9 +8,38 @@
     <!-- Commentaire en HTML -->
     <!-- Ici on ajoute l'appel vers les fichier CSS et aussi de script Javascript -->
     <link rel="stylesheet" href="./css/style.css" media="screen" />
+    <link rel="stylesheet" href="./css/bootstrap-icons.css" media="all" />
     <script src="./js/functions.js"></script>
     <script>
         window.addEventListener('DOMContentLoaded', function () {
+
+            function fetchData(url, search = ''){
+                fetch(url)
+                    .then(function(reponse){
+                        return reponse.json();
+                    })
+                    .then(function(data){
+                        //console.log(data);
+                        let tabResult = jsonToTable(data, search);
+                        document.querySelector('#result thead').innerHTML = tabResult[0];
+                        document.querySelector('#result tbody').innerHTML = tabResult[1];
+                        //console.log(tabResult);
+                    })
+                    .catch(error=>{
+                        //console.log(error);
+                        document.querySelector('#result thead').innerHTML = '';
+                        document.querySelector('#result tbody').innerHTML = `
+                        <div class="bi bi-info-circle-fill">
+                                <b>${error.name}<br />
+                                ${error.message}</b>
+                        </div>
+                        `;
+                    })
+                    .finally(()=>{
+                        console.log('fin de la requête');
+                    });
+            }
+
             let buttonsRead = document.querySelectorAll('button.read');
             let resultTHead = document.querySelectorAll('#result thead');
             let resultTBody = document.querySelectorAll('#result tbody');
@@ -19,17 +48,7 @@
                 btn.addEventListener('click', ()=>{
                     /*console.log(btn.dataset.url);*/
                     let url = btn.dataset.url;
-                    fetch(url)
-                    .then(function(reponse){
-                        return reponse.json();
-                    })
-                    .then(function(data){
-                        //console.log(data);
-                        let tabResult = jsonToTable(data);
-                        document.querySelector('#result thead').innerHTML = tabResult[0];
-                        document.querySelector('#result tbody').innerHTML = tabResult[1];
-                        console.log(tabResult);
-                    });
+                    fetchData(url);
                 });
             });
 
@@ -41,17 +60,7 @@
                     //console.log(search);
                     document.querySelector('#result thead').innerHTML = '';
                     document.querySelector('#result tbody').innerHTML = '';
-                    fetch('../ressources/users.json')
-                    .then(function(reponse){
-                        return reponse.json();
-                    })
-                    .then(function(data){
-                        //console.log(data);
-                        let tabResult = jsonToTable(data, search);
-                        document.querySelector('#result thead').innerHTML = tabResult[0];
-                        document.querySelector('#result tbody').innerHTML = tabResult[1];
-                        console.log(tabResult);
-                    });
+                    fetchData('../ressources/users.json', search);
                 }else{
                     document.querySelector('#result thead').innerHTML = '';
                     document.querySelector('#result tbody').innerHTML = '';
@@ -186,6 +195,9 @@ if(window.XMLHttpRequest || window.ActiveXObject){
                         </button>
                         <button class="read btn-primary" data-url="../ressources/comments.json">
                             comments.json
+                        </button>
+                        <button class="read btn-primary" data-url="../ressources/toto.json">
+                            error comments.json
                         </button>
                     </p>
             </article>
