@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Formation HTML5 - CSS3</title>
+    <!-- Commentaire en HTML -->
+    <!-- Ici on ajoute l'appel vers les fichier CSS et aussi de script Javascript -->
+    <link rel="stylesheet" href="./css/style.css" media="screen" />
+    <script src="./js/jquery-3.6.1.js"></script>
+    <script src="./js/functions.js"></script>
+    <script src="./js/jqueryajax.js"></script>
+</head>
+
+<body>
+    <header id="top">
+        <!-- en-tête de la page avec généralement le titre -->
+        <h1>Formation HTML5 CSS3</h1>
+    </header>
+    <nav>
+        <!-- navigation principale du site -->
+        <ul>
+            <li>
+                <a href="./index.html" title="Lien vers la page d'accueil">
+                    Accueil
+                </a>
+            </li>
+            <li>
+                <a href="./article.html" title="Lien vers l'article'">
+                    Article
+                </a>
+            </li>
+            <li>
+                <a href="./cssgrid.html" title="liens vers la page des grilles en CSS">Grilles CSS</a>
+            </li>
+            <li>
+                <a href="./exo-grid.html" title="liens vers la page exemple grilleCSS">Ex Grilles</a>
+            </li>
+            <li>
+                <a href="./bootstrap.html" title="liens vers la page en bootstrap">Boostrap</a>
+            </li>
+            <li>
+                <a href="./article-animation.html" title="liens vers la page des animations CSS">Animation CSS</a>
+            </li>
+            <li>
+                <a href="./js-base.html" title="liens vers la page javascript bases">Javascript Bases</a>
+            </li>
+            <li>
+                <a href="./js-ajax.html" title="liens vers la page javascript ajax">Javascript ajax</a>
+            </li>
+            <li>
+                <a href="./jquery-base.html" title="liens vers la page jquery base">JQuery Base</a>
+            </li>
+            <li>
+                <a href="./jquery-ajax.html" title="liens vers la page jquery ajax">JQuery Ajax</a>
+            </li>
+        </ul>
+    </nav>
+    <main>
+        <section>
+            <article>
+                <h2>Ajax avec JQuery</h2>
+                <pre>
+    jQuery( function($){
+        $.ajax();
+    });
+                    </pre>
+                <p>
+                    La fonction ajax() de JQuery contient les tests de compatibilité
+                    pour instancier XHR
+                </p>
+                <p>
+                    Lors de ces appels, il faut utiliser des paramètres, tel l'url de la source,
+                    la méthode (get pour récupérer les données, post pour en envoyer), etc.
+                </p>
+            </article>
+            <article>
+                <h2>Utiliser $.ajax()</h2>
+                <button id="showAllPosts">
+                    Tous les posts
+                </button>
+                <div id="allPosts">
+
+                </div>
+            </article>
+        </section>
+        <section>
+            <article>
+                <h2>.get() et .post()</h2>
+                <p>
+                    Les fonctions .get() et .post() sont des raccourcis de $.ajax(),
+                    elles utilisent donc soit GET ou POST.
+                    Elle recquiers des argument comme la fonction $.ajax()
+                </p>
+            </article>
+        </section>
+        <section>
+            <article>
+                <h2>Afficher les users avec .get()</h2>
+                <button id="showAllUsers">
+                    Tous les utilisateurs
+                </button>
+                <div id="allUsers">
+
+                </div>
+            </article>
+        </section>
+    </main>
+    <footer>
+        <!-- pied de page -->
+        <a href="#top" title="revenir en haut de la page">Haut de la page</a>
+    </footer>
+</body>
+
+</html>
