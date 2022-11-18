@@ -8,7 +8,276 @@
     <!-- Commentaire en HTML -->
     <!-- Ici on ajoute l'appel vers les fichier CSS et aussi de script Javascript -->
     <link rel="stylesheet" href="./css/style.css" media="screen" />
-    
+    <script src="./js/jquery-3.6.1.js"></script>
+    <script>
+        /*
+        jQuery(document).ready(function(){
+            console.log('le DOM est prêt v 1');
+        });
+        */
+        /* version raccourcis du DOM chargé */
+        /*
+        jQuery(function(){
+            console.log('le DOM est prêt v 2');
+        });
+        */
+
+        /* il existe un alias pour les appel JQuery : $() */
+        /*
+        $(function(){
+            console.log('le DOM est prêt v 3');
+        });
+        */
+        /* cette version $() n'est jamais préconisée, car il peut y avoir des conflit sur l'alias $(), il est parfois utilisé par d'autrs bibliothèque JS */
+        jQuery(function ($) {
+            console.log('Le DOM est prêt en v4 avec function($){} pour éviter les conflits d\'alias');
+            /* 
+            pour récupérer des éléments du DOM, on peut utilise querySelector, getElementById 
+            avec JQuery, on utilise $(selecteur) => marche our 1 élément ou une collection d'élément
+            */
+            /*
+            $('#firstBlood').click(function(e){
+                console.log('on a cliqué sur firstBlood');
+                console.log(e);
+            });
+            */
+
+            function activeButton() {
+                $('#firstBlood').on('click', function (e) {
+                    console.log('on a cliqué sur firstBlood');
+                    console.log(e);
+                    $(this).off(e);
+                });
+            }
+
+            activeButton();
+
+            $('#reactivate').on('click', function () {
+                activeButton();
+            });
+
+            let cptClic = 0;
+            let cptClicSpecial = 0;
+
+            $('p:not(p.special)').on('click', function () {
+                cptClic = cptClic + 1;
+                console.log(`clique p : ${cptClic}`);
+            });
+
+            $('p.special').on('click', function () {
+                cptClicSpecial = cptClicSpecial + 1;
+                console.log(`clique p special : ${cptClicSpecial}`);
+            });
+
+            function affInnerText(element) {
+                console.log(`contenu de l'élément : ${element.innerText}`);
+            }
+
+            $('.divLettreCercle').first().on('click', function () {
+                affInnerText(this);
+            });
+
+            $('.divLettreCercle').eq(1).on('click', function () {
+                affInnerText(this);
+            });
+
+            $('.divLettreCercle').eq(2).on('click', function () {
+                affInnerText(this);
+            });
+
+            $('.divLettreCercle').last().on('click', function () {
+                affInnerText(this);
+            });
+
+            // réccupérer tous les éléments ayant la classe "lien" et descendant d'un paragraphe
+            $('p .lien').css('color', 'red');
+
+            // réccupérer tous les éléments ayant la classe "lien" et descendants directs d'un paragraphe
+            $('p > .lien').css('color', 'green');
+
+            $('p.testPreventDefault a').on('click', function (event) {
+                console.log(event);
+                event.preventDefault();
+            });
+
+            $('#nom').focus(function () {
+                console.log('le focus est sur le champ de saisie "nom"');
+            });
+
+            $('#nom').keyup(function (event) {
+                console.log(event);
+                console.log(event.originalEvent);
+                console.log(event.key);
+                console.log(event.keyCode);
+            });
+
+            $('input:submit').click(function (event) {
+                event.preventDefault();
+                let nom = $('#nom').val();
+                let prenom = $('#prenom').val();
+                if ('' !== nom && '' !== prenom) {
+                    $('#formContact').submit();
+                } else {
+                    console.log('nom ou prénom vide');
+                }
+            });
+
+            /*
+            document.querySelectorAll('p.demoThis').forEach(element=>{
+                element.addEventListener('click', ()=>{
+                    //code du click
+                });
+            });
+            */
+            $('p.demoThis').click(function () {
+                $(this).css('color', 'red');
+                $(this).css('fontWeight', 'bold');
+                /* this.style.setProperty('font-weight', 'bold') */
+                /* this.css('fontWeight', 'bold') */
+            });
+
+            $('p.resetColors').click(function () {
+                $('p.demoThis').each(function () {
+                    $(this).removeAttr('style');
+                    /*
+                    this.style.removeProperty('color');
+                    this.style.removeProperty('font-weight');
+                    */
+                });
+            });
+
+            /* surveiller keyup sur #saisie */
+            $('#saisie').keyup((touche) => {
+                let codeTouche = touche.keyCode;
+                if (13 === codeTouche) {
+                    $('#quelleTouche').text(codeTouche);
+                } else {
+                    $('#quelleTouche').text(`la touche ${touche.key} à le code ${codeTouche}`);
+                }
+            });
+
+            $('#clickMeVirtuel').dblclick(() => {
+                console.log('un dblClick sur clickMeVirtuel');
+            });
+
+            $('#clickMeVirtuel').trigger('dblclick');
+
+            /* surveiller pluisieurs évènements différents sur un même élément pour déclencher la même action */
+            $('.evnt01').on('click dblclick', () => {
+                console.log('un click ou dblclick sur evnt01');
+            });
+
+            /* 
+            gérer des comportement différents selon les évènements différent sur un élémént toujours avec le gestionnaire d'évènement 
+            .on({
+                évènement1: ()={},
+                évènement2: ()={},
+            ...,
+                évènementX: ()=>{}
+            });
+            */
+
+            $('.evnt02').on({
+                click: () => {
+                    console.log('click sur evnt02');
+                },
+                dblclick: () => {
+                    console.log('dblclick sur evnt02');
+                }
+            });
+
+            $('#tableGenerate tbody').append(`
+<tr>
+    <td class="c01">Res 01</td>
+    <td class="c02">Res 02</td>
+</tr>
+<tr>
+    <td class="c02">Res 02</td>
+    <td class="c02">Res 02</td>
+</tr>
+            `);
+
+            /*
+            $('#tableGenerate tbody tr td').click(()=>{
+                console.log('click sur un td du tableau ajouté après le chargement du DOM');
+            });
+            */
+
+            $('#tableGenerate tbody').on(
+                'click', 'td.c01',
+                function () {
+                    console.log('click sur un td.c01 du tableau ajouté après le chargement du DOM grâce à la délégation');
+                }
+            );
+
+            /* les namespace */
+            $('#nameSpace').on('click.declencheurNamespace01', () => {
+                console.log('namespace declencheurNamespace01');
+            });
+
+            $('#nameSpace').on('click.declencheurNamespace02', () => {
+                console.log('namespace declencheurNamespace02');
+            });
+
+            $(window).keyup((event) => {
+                /* keyCode 38 => flèche haut */
+                if (38 === event.keyCode) {
+                    $('#nameSpace').trigger('click.declencheurNamespace01');
+                }
+                /* keyCode 40 => flèche bas */
+                if (40 === event.keyCode) {
+                    $('#nameSpace').trigger('click.declencheurNamespace02');
+                }
+            });
+
+            $('#nameSpace').trigger('click.declencheurNamespace02');
+
+            //annuleCptClick
+            //reactiveCptClick
+            //annuleClickBody
+
+            /* annuler un écouteur d'évènement */
+
+            $('#annuleCptClick').click(function () {
+                $('p').off('click');
+            });
+
+            /* réactiver le cptClick */
+
+            $('#reactiveCptClick').on('click', function () {
+                $('p:not(p.special)').on('click', function () {
+                    cptClic = cptClic + 1;
+                    console.log(`clique p : ${cptClic}`);
+                });
+
+                $('p.special').on('click', function () {
+                    cptClicSpecial = cptClicSpecial + 1;
+                    console.log(`clique p special : ${cptClicSpecial}`);
+                });
+            });
+
+            /* annuler un écouteur d'évènement délégué */
+            /* écouteur délégué */
+            $('body').on('click', 'p', function(){
+                console.log('clic sur un p de body');
+            });
+            
+            $('body').on('click', 'li', function(){
+                console.log('clic sur un li de body');
+            });
+
+            $('#annuleClickBodyP').click(function(){
+                $('body').off('click', 'p');
+                /* annule les clics paragraphe de p dans body */
+            });
+            
+            $('#annuleClickBody').click(function(){
+                $('body').off('click');
+                /* annule les clics d'élément dans body */
+            });
+        });
+
+    </script>
 </head>
 
 <body>
@@ -62,10 +331,10 @@
                     <h2>Inclure jQuery dans une page</h2>
                     <h3>Un framework</h3>
                     <p>
-                        JQuery est un framework, un cadre de travail ou un ensemble de fonctions 
+                        JQuery est un framework, un cadre de travail ou un ensemble de fonctions
                         javascript organisées en bibliothèques.
-                        Le but de JQuery est de simplifier le JS interractif, 
-                        en simplifiant l'écriture des appels de fonctions, d'évènements, la manipulation 
+                        Le but de JQuery est de simplifier le JS interractif,
+                        en simplifiant l'écriture des appels de fonctions, d'évènements, la manipulation
                         du DOM, etc.
                     </p>
                 </main>
@@ -76,10 +345,10 @@
                 </header>
                 <main>
                     <p>
-                    Il suffit de télécharger la dernière version du fichier 
-                    jquery sur le site jquery.com, de le déposer dans un répertoire 
-                    dans le projet et d'y faire appel dans le head de la page.
-                </p>
+                        Il suffit de télécharger la dernière version du fichier
+                        jquery sur le site jquery.com, de le déposer dans un répertoire
+                        dans le projet et d'y faire appel dans le head de la page.
+                    </p>
                 </main>
             </article>
             <article>
@@ -88,12 +357,12 @@
                 </header>
                 <main>
                     <p>
-                        Comme avec JS, il faut que le DOM soit complètement chargé pour 
+                        Comme avec JS, il faut que le DOM soit complètement chargé pour
                         qu'on puisse le manipuler avec JQuery.
                     </p>
                     <p>
-                        Pour cela, on va utilise la fonction jQuery .ready(), qui ne permettra 
-                        d'utiliser le code à l'intérieur qu'à partir du moment ou le 
+                        Pour cela, on va utilise la fonction jQuery .ready(), qui ne permettra
+                        d'utiliser le code à l'intérieur qu'à partir du moment ou le
                         DOM est complètement chargé.
                     </p>
                 </main>
@@ -106,9 +375,10 @@
                 </header>
                 <main>
                     <p>
-                        Il est possible d'utiliser un alias pour utiliser JQuery : $() 
-                        Mais cet alias est souvent utilisé par beaucoup d'autres bibliothèques Js qui 
-                        pourraient être appelée en même temps que JQuery. En changeant la déclaration on peut facilement éviter ce conflit
+                        Il est possible d'utiliser un alias pour utiliser JQuery : $()
+                        Mais cet alias est souvent utilisé par beaucoup d'autres bibliothèques Js qui
+                        pourraient être appelée en même temps que JQuery. En changeant la déclaration on peut facilement
+                        éviter ce conflit
                     </p>
                 </main>
             </article>
@@ -118,15 +388,16 @@
                 </header>
                 <main>
                     <p>
-                        JQuery reponse principalement sur l'alias $(), on va ciblé à l'aide des sélecteurs CSS (les sélecteurs HTML) les éléments de la page sur lesquels interviendra le script.
+                        JQuery reponse principalement sur l'alias $(), on va ciblé à l'aide des sélecteurs CSS (les
+                        sélecteurs HTML) les éléments de la page sur lesquels interviendra le script.
                     </p>
                     <p>
-                        <button id="firstBlood">Cliquez ici</button>
+                        <button class="btn-primary" id="firstBlood">Cliquez ici</button>
                     </p>
                     <p>
-                        <button id="reactivate">Réactiver le bouton</button>
+                        <button class="btn-primary" id="reactivate">Réactiver le bouton</button>
                     </p>
-                </main>                
+                </main>
             </article>
         </section>
         <h2>Les sélecteurs</h2>
@@ -138,11 +409,11 @@
                 <main>
                     <p>
                         On peut utiliser des sélecteurs semblables aux sélécteurs CSS pour cibler les éléments.
-                        Un élément peut être ciblé en balise <code>&lt;p&gt;</code>, 
+                        Un élément peut être ciblé en balise <code>&lt;p&gt;</code>,
                         par id en utilisant #, par classe avec le . (point) .
                     </p>
                     <p>
-                        Tous les paragraphes de la page ont maintenant une action 
+                        Tous les paragraphes de la page ont maintenant une action
                         liée à l'évènement "click".
                     </p>
                     <p class="special">
@@ -167,8 +438,11 @@
                     <div class="divLettreCercle">
                         C
                     </div>
+                    <div class="divLettreCercle">
+                        D
+                    </div>
                     <p>
-                        On fait aussi la différence entre les éléments contenus dans d'autres éléments (parents) 
+                        On fait aussi la différence entre les éléments contenus dans d'autres éléments (parents)
                         et les descendants (enfants) directs d'un autre élément
                     </p>
                     <p class="testPreventDefault">
@@ -224,11 +498,11 @@
         <section>
             <article>
                 <header>
-                    <h2>Définition d'un évènement</h2>    
+                    <h2>Définition d'un évènement</h2>
                 </header>
                 <main>
                     <p>
-                        Un évènement est une action remplie par le navigateur 
+                        Un évènement est une action remplie par le navigateur
                         ou via le navigateur : depuis la souris, clavier, clic sur la page, etc.
                     </p>
                 </main>
@@ -282,31 +556,31 @@
                 <h2>Évènement au clavier</h2>
                 <table cellpadding="0" cellspacing="0">
                     <thead>
-                    <tr>
-                        <th>Action</th>
-                        <th>Fonction</th>
-                    </tr>
+                        <tr>
+                            <th>Action</th>
+                            <th>Fonction</th>
+                        </tr>
                     </thead>
                     <tbody>
-                    <tr>
-                        <td>Touche du clavier est enfoncée</td>
-                        <td>keydown()</td>
-                    </tr>
-                    <tr>
-                        <td>Maintient d'une touche enfoncée</td>
-                        <td>keypress()</td>
-                    </tr>
-                    <tr>
-                        <td>Relâchement d'une touche préalablement enfoncée</td>
-                        <td>keyup()</td>
-                    </tr>
+                        <tr>
+                            <td>Touche du clavier est enfoncée</td>
+                            <td>keydown()</td>
+                        </tr>
+                        <tr>
+                            <td>Maintient d'une touche enfoncée</td>
+                            <td>keypress()</td>
+                        </tr>
+                        <tr>
+                            <td>Relâchement d'une touche préalablement enfoncée</td>
+                            <td>keyup()</td>
+                        </tr>
                     </tbody>
                 </table>
                 <h2>Quelle touche ?</h2>
                 <p>
-                    Pour lire la touche utilisée par l'utilisateur,il faut faire attention car la 
+                    Pour lire la touche utilisée par l'utilisateur,il faut faire attention car la
                     fonction a utiliser sur l'évènement diffère selon les navigateurs.
-                    Heureusement, seulement deux fonction différentes et non une par 
+                    Heureusement, seulement deux fonction différentes et non une par
                     navigateur existant.
                 </p>
                 <textarea id="saisie"></textarea>
@@ -321,28 +595,28 @@
                 <main>
                     <table cellpadding="0" cellspacing="0">
                         <thead>
-                        <tr>
-                            <th>Action</th>
-                            <th>Fonction</th>
-                        </tr>
+                            <tr>
+                                <th>Action</th>
+                                <th>Fonction</th>
+                            </tr>
                         </thead>
                         <tbody>
-                        <tr>
-                            <td>Focalisation</td>
-                            <td>focus()</td>
-                        </tr>
-                        <tr>
-                            <td>Sélection (p.e. dans une liste)</td>
-                            <td>select()</td>
-                        </tr>
-                        <tr>
-                            <td>Changement de valeur</td>
-                            <td>change()</td>
-                        </tr>
-                        <tr>
-                            <td>Envoi du formulaire</td>
-                            <td>submit()</td>
-                        </tr>
+                            <tr>
+                                <td>Focalisation</td>
+                                <td>focus()</td>
+                            </tr>
+                            <tr>
+                                <td>Sélection (p.e. dans une liste)</td>
+                                <td>select()</td>
+                            </tr>
+                            <tr>
+                                <td>Changement de valeur</td>
+                                <td>change()</td>
+                            </tr>
+                            <tr>
+                                <td>Envoi du formulaire</td>
+                                <td>submit()</td>
+                            </tr>
                         </tbody>
                     </table>
                 </main>
@@ -361,14 +635,14 @@
                 </header>
                 <main>
                     <p>
-                        Le gestionnaire d'évènements permet de configurer 
+                        Le gestionnaire d'évènements permet de configurer
                         sur une seul élément plusieurs écouteurs différents (click, bdclick, hover, etc.).
                     </p>
                     <p class="evnt01 special">
                         Gestion même comportement selon deux évènements différents
                     </p>
                     <p class="evnt02 special">
-                        Gestion par un gestionnaire d'évènements : 
+                        Gestion par un gestionnaire d'évènements :
                         un comportement différent par évènement.
                     </p>
                 </main>
@@ -376,11 +650,11 @@
             <article>
                 <h2>La délégation</h2>
                 <p>
-                    La délégation permet de repérer un évènement sur un élément ajouté après 
+                    La délégation permet de repérer un évènement sur un élément ajouté après
                     le chargement du DOM (donc inécoutable avec $("#element")).
                 </p>
                 <p>
-                    On peut en revanche écouter l'évèment sur un élément parent qui lui a été 
+                    On peut en revanche écouter l'évèment sur un élément parent qui lui a été
                     chargé dans le DOM
                 </p>
                 <p>
@@ -391,7 +665,7 @@
                     <li>L'élément parent écouté qui nous renvoie la cible de l'évènement</li>
                     <li>La fonction en retour liée à l'évènement</li>
                 </ul>
-                <table id="tableGenerate">
+                <table id="tableGenerate" width="100%">
                     <thead>
                         <tr>
                             <th>Col 1</th>
@@ -422,7 +696,7 @@
                         <li>namespace : la dénomination de l'espace de nom</li>
                     </ul>
                     <p class="special">
-                        <button id="nameSpace">Test du namespace</button>
+                        <button class="btn-primary" id="nameSpace">Test du namespace</button>
                     </p>
                 </main>
             </article>
@@ -432,14 +706,15 @@
                 </header>
                 <main>
                     <p>
-                        Différentes fonctions peuvent 
+                        Différentes fonctions peuvent
                         être exécutées depuis un même évènement
                     </p>
                     <ul>
                         <li>On peut définir plusieurs espaces de noms pour un même évènement</li>
-                        <li>On ne peut pas appeler plusieurs espaces de noms en même temps<li>
+                        <li>On ne peut pas appeler plusieurs espaces de noms en même temps
                         <li>
-                            On peut aussi préciser le type d'évènement sans préciser l'espace de nom, 
+                        <li>
+                            On peut aussi préciser le type d'évènement sans préciser l'espace de nom,
                             toutes les action liées à l'évènement seront exécutées sans tenir compte du namespace.
                         </li>
                         <li>
@@ -464,7 +739,7 @@
             <article>
                 <h2>Supprimer les écouteurs d'évènements</h2>
                 <p>
-                    La fonction inverse de .on() est .off() et 
+                    La fonction inverse de .on() est .off() et
                     permet de supprimer les écouteurs d'évènement mis en place.
                 </p>
                 <p>
@@ -473,9 +748,10 @@
                 <p>
                     Dans les arguments de .off() on peut préciser quel event on annule sur l'élément
                 </p>
-                <button id="annuleCptClick">Annuler le cptClick P</button> 
-                <button id="reactiveCptClick">réactive le le cptClick P</button> 
-                <button id="annuleClickBody">annule tous les event click body délégués</button> 
+                <button class="btn-primary" id="annuleCptClick">Annuler le cptClick P</button>
+                <button class="btn-primary" id="reactiveCptClick">réactive le le cptClick P</button>
+                <button class="btn-primary" id="annuleClickBodyP">annule tous les event click body p délégués</button>
+                <button class="btn-primary" id="annuleClickBody">annule tous les event click body délégués</button>
             </article>
         </section>
     </main>
