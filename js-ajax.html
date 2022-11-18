@@ -14,6 +14,7 @@
             let buttonsRead = document.querySelectorAll('button.read');
             let resultTHead = document.querySelectorAll('#result thead');
             let resultTBody = document.querySelectorAll('#result tbody');
+            /* affichage des fichiers selon le bouton read */
             buttonsRead.forEach(btn=>{
                 btn.addEventListener('click', ()=>{
                     /*console.log(btn.dataset.url);*/
@@ -23,11 +24,38 @@
                         return reponse.json();
                     })
                     .then(function(data){
-                        console.log(data);
+                        //console.log(data);
                         let tabResult = jsonToTable(data);
+                        document.querySelector('#result thead').innerHTML = tabResult[0];
+                        document.querySelector('#result tbody').innerHTML = tabResult[1];
                         console.log(tabResult);
                     });
                 });
+            });
+
+            /* recherce info user dans users.json */
+            let searchUser = document.querySelector('#searchUser');
+            searchUser.addEventListener('keyup', function(){
+                let search = searchUser.value.toLowerCase();
+                if(search.length >= 3){
+                    //console.log(search);
+                    document.querySelector('#result thead').innerHTML = '';
+                    document.querySelector('#result tbody').innerHTML = '';
+                    fetch('../ressources/users.json')
+                    .then(function(reponse){
+                        return reponse.json();
+                    })
+                    .then(function(data){
+                        //console.log(data);
+                        let tabResult = jsonToTable(data, search);
+                        document.querySelector('#result thead').innerHTML = tabResult[0];
+                        document.querySelector('#result tbody').innerHTML = tabResult[1];
+                        console.log(tabResult);
+                    });
+                }else{
+                    document.querySelector('#result thead').innerHTML = '';
+                    document.querySelector('#result tbody').innerHTML = '';
+                }
             });
         });
 
@@ -152,6 +180,12 @@ if(window.XMLHttpRequest || window.ActiveXObject){
                         </button>
                         <button class="read btn-primary" data-url="../ressources/bdd.json">
                             bdd.json
+                        </button>
+                        <button class="read btn-primary" data-url="../ressources/posts.json">
+                            posts.json
+                        </button>
+                        <button class="read btn-primary" data-url="../ressources/comments.json">
+                            comments.json
                         </button>
                     </p>
             </article>

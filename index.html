@@ -8,6 +8,7 @@
     <!-- Commentaire en HTML -->
     <!-- Ici on ajoute l'appel vers les fichier CSS et aussi de script Javascript -->
     <link rel="stylesheet" href="./css/style.css" media="screen" />
+    <link rel="stylesheet" href="./css/bootstrap-icons.css" media="all" />
     <style>
         /* Commentaires en CSS */
         .deuxEm {
@@ -468,14 +469,14 @@ fugit!
                                 <input type="text" name="prenom" id="prenom" aria-describedby="prenomAide"
                                     placeholder="Votre nom" />
                                 </p>
-                                <div id="prenomAide">
+                                <div id="prenomAide" class="bi bi-info-circle-fill">
                                     Entrez votre prénom dans ce champ
                                 </div>
                             <p>
                                 <label for="nom">Nom : </label>
                                 <input type="text" name="nom" id="nom" aria-describedby="nomAide" required />
                             </p>
-                            <div id="nomAide">
+                            <div id="nomAide" class="bi bi-info-circle-fill">
                                 Entrez votre nom dans ce champ
                             </div>
                             <p>
@@ -483,14 +484,14 @@ fugit!
                                 <input type="email" name="email" id="email" aria-describedby="emailAide" required
                                     pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,10}$" />
                                 </p>
-                                <div id="emailAide">
+                                <div id="emailAide" class="bi bi-info-circle-fill">
                                     Entrez votre email dans ce champ
                                 </div>
                             <p>
                                 <label for="telephone">Téléphone : </label>
                                 <input type="tel" name="telephone" id="telephone" aria-describedby="telephoneAide" />
                             </p>
-                            <div id="telephoneAide">
+                            <div id="telephoneAide" class="bi bi-info-circle-fill">
                                 Entrez votre téléphone dans ce champ
                             </div>
                         </fieldset>
