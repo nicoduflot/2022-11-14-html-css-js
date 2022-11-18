@@ -217,14 +217,16 @@ figure.video{
     overflow:hidden;
 }
 
-#result, #allPosts, #allUsers, #allBooks{
+#result, #allPosts, #allUsers, #allBooks, #allXmlBooks, #allXmlSource{
     width: 100%;
 }
 
 #result th, #result td,
 #allPosts th, #allPosts td,
 #allUsers th, #allUsers td,
-#allBooks th, #allBooks td
+#allBooks th, #allBooks td,
+#allXmlBooks th, #allXmlBooks td,
+#allXmlSource th, #allXmlSource td
 {
     word-break:keep-all;
 }

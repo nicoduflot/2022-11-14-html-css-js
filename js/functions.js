@@ -52,3 +52,33 @@ function jsonToTable(data, search = ''){
     thead = thead + '</tr>';
     return [thead, tbody]
 }
+
+function xmlToTable(xml, search = ''){
+    let thead = '<tr>';
+    let tbody = '';
+    let premierParcour = true;
+    $(xml).find(search).each(function(){
+        let book = $(this).find('*'); /* récupérer les entrée du xml */
+        let column = book.length;
+        tbody = tbody + '<tr>';
+        let mapField = new Map();
+        for(let i = 0; i < column; i++){
+            let actualNodeName = book.eq(i)[0].nodeName;
+            mapField.set(actualNodeName, $(this).find(actualNodeName).text() + ' ');
+        }
+        console.log(mapField);
+        for([key, value] of mapField.entries()){
+            console.log(key, value);
+            tbody = tbody + '<td>';
+            tbody = tbody + value;
+            tbody = tbody + '</td>';
+            if(premierParcour){
+                thead = thead + `<th>${key}</th>`
+            }
+        }
+        premierParcour = false;
+        tbody = tbody + '</tr>';
+    });
+    thead = thead + '</tr>';
+    return [thead, tbody]
+}

@@ -68,5 +68,54 @@ jQuery(function ($) {
             console.log('fin de la requête .get()');
         });
     });
-
+    
+    $('#showAllXmlBooks').click(()=>{
+        $.ajax({
+            /* 
+            requête vers le flux de données "url", 
+            on indique aussi le type de requête "GET" ou "POST",
+            et le format des données de retour "json"
+            */
+            url: './ressources/books.xml',
+            type: 'GET',
+            dataType: 'xml'
+        })
+        .done(xml=>{
+            let tabResult = xmlToTable(xml, 'book');
+            $('#allXmlBooks thead').html(tabResult[0]);
+            $('#allXmlBooks tbody').html(tabResult[1]);
+        })
+        .fail((erreur)=>{
+            $('#allXmlBooks thead').html('<tr><th>ERREUR</th></tr>');
+            $('#allXmlBooks tbody').html(`<tr><td>${erreur.responseText}</td></tr>`);
+        })
+        .always(()=>{
+            console.log('fin de la requête .get()');
+        });
+    });
+    
+    $('#showAllXmlSource').click(()=>{
+        $.ajax({
+            /* 
+            requête vers le flux de données "url", 
+            on indique aussi le type de requête "GET" ou "POST",
+            et le format des données de retour "json"
+            */
+            url: './ressources/creative.rss',
+            type: 'GET',
+            dataType: 'xml'
+        })
+        .done(xml=>{
+            let tabResult = xmlToTable(xml, 'item');
+            $('#allXmlSource thead').html(tabResult[0]);
+            $('#allXmlSource tbody').html(tabResult[1]);
+        })
+        .fail((erreur)=>{
+            $('#allXmlSource thead').html('<tr><th>ERREUR</th></tr>');
+            $('#allXmlSource tbody').html(`<tr><td>${erreur.responseText}</td></tr>`);
+        })
+        .always(()=>{
+            console.log('fin de la requête .get()');
+        });
+    });
 });
