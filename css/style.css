@@ -217,12 +217,16 @@ figure.video{
     overflow:hidden;
 }
 
-#result{
+#result, #allPosts, #allUsers, #allBooks{
     width: 100%;
 }
 
-#result th, #result td{
-    word-break: keep-all;
+#result th, #result td,
+#allPosts th, #allPosts td,
+#allUsers th, #allUsers td,
+#allBooks th, #allBooks td
+{
+    word-break:keep-all;
 }
 
 .divLettreCercle{
